@@ -2,14 +2,15 @@
     "manifest_version": 2,
     "name": "Best New Tab Page",
     "version": "0.0.1",
-    
-    "defualt_locale": "en",
     "description": "The absolute best new tab page",
-    "icon": { 
-    	"128" : "house-icon.png"
-},
+    
 	"chrome_url_overrides" : {
 		"newtab": "index.html"
-	}
+	    },
+	
+	"permissions" : [
+	    "bookmarks"
+	    ]
+	
 	
 }
