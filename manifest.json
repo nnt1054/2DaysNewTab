@@ -2,16 +2,17 @@
     "manifest_version": 2,
     "name": "Best New Tab Page",
     "version": "0.0.1",
+
+    "defualt_locale": "en",
     "description": "The absolute best new tab page",
-    
-	"chrome_url_overrides" : {
-		"newtab": "index.html"
-	    },
-	
-	"permissions" : [
-	    "bookmarks",
-	    "identity"
-	    ]
-	
-	
-}
+    "icon": house-icon.png,
+    "permissions": [
+        "activeTab",
+        "https://ajax.googleapis.com/",
+        "identity"
+      ],
+    "content scripts": [{
+      "js": ["jquery.simpleWeather.min.js", "jquery.simpleWeather.js", "jquery-3.1.1min.js", "calendar_auth.js"
+        "weather.js", "bookmarks.js"],
+    "matches": ["http://*/*", "https://*/*"] }]
+  }
