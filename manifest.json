@@ -14,5 +14,5 @@
       "js": ["jquery.simpleWeather.min.js", "jquery.simpleWeather.js", "jquery-3.1.1.min.js", "calendar_auth.js",
         "weather.js", "bookmarks.js"],
     "matches": ["http://*/*", "https://*/*"] }],
-    "content_security_policy":"script-src 'self' https://apis.google.com/js/api.js https://query.yahooapis.com/v1/public object-src 'self'"
+    "content_security_policy":"script-src 'self' https://apis.google.com/js/api.js https://query.yahooapis.com/v1/public; object-src 'self'"
   }
