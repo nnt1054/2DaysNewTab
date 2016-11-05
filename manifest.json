@@ -9,7 +9,7 @@
     	"128" : "house-icon.png"
 },
 	"chrome_url_overrides" : {
-		"newtab": "empty.html"
+		"newtab": "index.html"
 	}
 	
 }
