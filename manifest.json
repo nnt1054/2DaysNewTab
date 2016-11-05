@@ -5,7 +5,7 @@
 
     "defualt_locale": "en",
     "description": "The absolute best new tab page",
-    "icon": house-icon.png,
+    "icon": "house-icon.png",
     "permissions": [
         "activeTab",
         "https://ajax.googleapis.com/",
