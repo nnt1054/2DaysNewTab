@@ -3,15 +3,15 @@
     "name": "Best New Tab Page",
     "version": "0.0.1",
 
-    "defualt_locale": "en",
+    "default_locale": "en",
     "description": "The absolute best new tab page",
-    "icon": "house-icon.png",
+    "icons": "house-icon.png",
     "permissions": [
         "activeTab",
         "https://ajax.googleapis.com/",
         "identity"
       ],
-    "content scripts": [{
+    "content_scripts": [{
       "js": ["jquery.simpleWeather.min.js", "jquery.simpleWeather.js", "jquery-3.1.1min.js", "calendar_auth.js",
         "weather.js", "bookmarks.js"],
     "matches": ["http://*/*", "https://*/*"] }]
