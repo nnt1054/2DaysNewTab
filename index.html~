@@ -3,6 +3,7 @@
     <link rel="stylesheet" type="text/css" href="main.css">
     <head>
         <meta charset="UTF-8">
+        <script type="text/javascript" lang="javascript" src="jquery-3.1.1.min.js"></script>
     
         <title>new tab</title>
     </head>
