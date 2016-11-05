@@ -6,7 +6,7 @@
 
       function initClient() {
         gapi.client.init({
-            apiKey: 'YOUR_API_KEY',
+            apiKey: AIzaSyAKcCdHczwl3_1FTHm3TTxzTWQDoxTjM4Q,
             discoveryDocs: ["https://people.googleapis.com/$discovery/rest?version=v1"],
             clientId: 993464514830-bs0hqjvqe1t4p1ksskjv6i3k506vptuc.apps.googleusercontent.com,
             scope: 'profile'
