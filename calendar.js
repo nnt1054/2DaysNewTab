@@ -1,5 +1,3 @@
-<script src="https://apis.google.com/js/api.js"></script>
-<script>
 function start() {
   // 2. Initialize the JavaScript client library.
   gapi.client.init({
@@ -21,4 +19,3 @@ function start() {
 };
 // 1. Load the JavaScript client library.
 gapi.load('client', start);
-</script>
