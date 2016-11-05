@@ -1,15 +1,15 @@
 {
     "manifest_version": 2,
     "name": "Best New Tab Page",
-    "version": "0.0.1",
-
-    "default_locale": "en",
+    "version": "0.0.2",
     "description": "The absolute best new tab page",
     "permissions": [
         "activeTab",
         "https://ajax.googleapis.com/",
-        "identity"
+        "identity",
+        "bookmarks"
       ],
+      "chrome_url_overrides" : {"newtab" "index.html"},
     "content_scripts": [{
       "js": ["jquery.simpleWeather.min.js", "jquery.simpleWeather.js", "jquery-3.1.1.min.js", "calendar_auth.js",
         "weather.js", "bookmarks.js"],
