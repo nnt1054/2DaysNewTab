@@ -12,7 +12,7 @@
         "identity"
       ],
     "content scripts": [{
-      "js": ["jquery.simpleWeather.min.js", "jquery.simpleWeather.js", "jquery-3.1.1min.js", "calendar_auth.js"
+      "js": ["jquery.simpleWeather.min.js", "jquery.simpleWeather.js", "jquery-3.1.1min.js", "calendar_auth.js",
         "weather.js", "bookmarks.js"],
     "matches": ["http://*/*", "https://*/*"] }]
   }
