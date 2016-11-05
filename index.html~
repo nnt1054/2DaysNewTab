@@ -25,5 +25,9 @@
          </div>
     </div>
 </body>
-        
+
+    <script type="text/javascript" lang="javascript" src="bookmarks.js"></script>
+    <script type="text/javascript" lang="javascript" src="weather.js"></script>
+    <script type="text/javascript" lang="javascript" src="calendar.js"></script>
+    
 </html>
