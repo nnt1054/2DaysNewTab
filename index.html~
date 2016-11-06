@@ -4,6 +4,8 @@
     <head>
         <meta charset="UTF-8">
         <script type="text/javascript" lang="javascript" src="jquery-3.1.1.min.js"></script>
+        <script type="text/javascript" lang="javascript" src="jquery.simpleWeather.js"></script>
+        <script type="text/javascript" lang="javascript" src="jquery.simpleWeather.min.js"></script>
 
         <title>new tab</title>
     </head>
@@ -14,25 +16,22 @@
                     <h1> bookmarks </h1>
                 </div>
             <div id="vertical">
-                <div id="weather">
-                    <h1> weather </h1>
-                </div>
+                <div id="weather"></div>
 
                 <div id="calendar">
+                  <button id="authorize-button" style="display: none;">Authorize</button>
+                  <button id="signout-button" style="display: none;">Sign Out</button>
                     <h1> calendar </h1>
                     <script src="https://apis.google.com/js/api.js"></script>
-                    <script> calendar.js </script>
+                    <script> src="calendar_auth.js" </script>
                 </div>
             </div>
          </div>
     </div>
 </body>
 
-<<<<<<< HEAD
     <script type="text/javascript" lang="javascript" src="bookmarks.js"></script>
     <script type="text/javascript" lang="javascript" src="weather.js"></script>
     <script type="text/javascript" lang="javascript" src="calendar.js"></script>
-    
-=======
->>>>>>> fdbcfb9db2d0a72be6037eccf7c31a8ecc45fd21
+
 </html>
