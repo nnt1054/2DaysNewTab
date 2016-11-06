@@ -1,7 +1,7 @@
 function start() {
   // 2. Initialize the JavaScript client library.
   gapi.client.init({
-    'apiKey': 'YOUR_API_KEY',
+    'apiKey': AIzaSyAKcCdHczwl3_1FTHm3TTxzTWQDoxTjM4Q,
     'discoveryDocs': ['https://people.googleapis.com/calendar/v3'],
     // clientId and scope are optional if auth is not required.
     'clientId': 993464514830-bs0hqjvqe1t4p1ksskjv6i3k506vptuc.apps.googleusercontent.com,
