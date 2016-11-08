@@ -17,12 +17,14 @@
             <div id="vertical">
                 <div id="weather"></div>
                 <div id="calendar">
-                  <!-- <button id="authorize-button" style="display: none;">Authorize</button>
-                  <button id="signout-button" style="display: none;">Sign Out</button>
-                    <h1> calendar </h1>
-                    <script src="https://apis.google.com/js/api.js"></script>
-                    <script src="calendar_auth.js"> </script>
-                    -->
+                    <div id="authorize-div" style="display: none">
+                    <span>Authorize access to Google Calendar API</span>
+                    <!--Button for the user to click to initiate auth sequence -->
+                    <button id="authorize-button" onclick="handleAuthClick(event)">
+                        Authorize
+                    </button>
+                    </div>
+                    <pre id="output"></pre>
                 </div>
             </div>
          </div>
@@ -31,6 +33,7 @@
 
     <script type="text/javascript" lang="javascript" src="bookmarks.js"></script>
     <script type="text/javascript" lang="javascript" src="weather.js"></script>
-    <script type="text/javascript" lang="javascript" src="calendar.js"></script>
-
+    <script type="text/javascript" lang="javascript" src="calendar2.js"></script>
+    <script src="https://apis.google.com/js/client.js?onload=handleClientLoadAuto"></script>
+    
 </html>
