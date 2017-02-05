@@ -13,7 +13,7 @@ body, html {
 #bookmarks {
     width: 50%;
     height: 100%;
-    background: blue;
+    background: white;
 }
 
 #weather {
@@ -41,15 +41,6 @@ body, html {
     height: 100%;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
+#bookmark-list {
+    list-style: none;
+}

@@ -4,19 +4,20 @@
       var CLIENT_ID = '559223177845-kf5t6kmpup2ikseq04v7583un2efpams.apps.googleusercontent.com';
 
       var SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"];
-       
+
       var apiKey = "AIzaSyCdneDaG1uHV0gxjmmw6znWcemFamIy_yA"
 
       /**
        * Check if current user has authorized this application.
        */
-      
+      document.getElementById("authorize-button").addEventListener("click", handleAuthClick);
+
       var handleClientLoadAuto = function () {
         console.log("handleClientLoadAuto");
         gapi.client.setApiKey(apiKey);
         window.setTimeout(checkAuthAuto, 1);
       }
-      
+
       var checkAuthAuto = function () {
         console.log("checkAuthAuto");
         gapi.auth.authorize(
@@ -26,7 +27,7 @@
             'immediate': true
           }, handleAuthResult);
       }
-      
+
       /**
        * Handle response from authorization server.
        *
