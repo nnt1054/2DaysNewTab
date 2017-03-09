@@ -50,10 +50,13 @@ function addBookmark() {
     url: form.url.value
   }
   if (form.folders.value != "Default") {
-    object.parentId = nametoid[form.folders.value];
+    object['parentId'] = nametoid[form.folders.value];
   }
   chrome.bookmarks.create(object, function(result) {
-    console.log(result);
+    if (result == null) {
+        alert("Invalid URL, Don't forget to include 'https://'");
+        return;
+    }
     if (result && object.parentId == bm.id) {
       var blist = document.getElementById("bookmark-list");
       var li = document.createElement("li");
@@ -95,6 +98,7 @@ function openFolder(name) {
       console.log(child)
       window.open(child.url, '_blank');
     })
+    window.close();
   });
 };
 
