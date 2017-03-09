@@ -1,24 +1,42 @@
 <!DOCTYPE html>
 <html>
-    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
     <head>
         <meta charset="UTF-8">
-        <script type="text/javascript" lang="javascript" src="jquery-3.1.1.min.js"></script>
-        <script type="text/javascript" lang="javascript" src="jquery.simpleWeather.min.js"></script>
+        <script type="text/javascript" lang="javascript" src="lib/jquery-3.1.1.min.js"></script>
+        <script type="text/javascript" lang="javascript" src="lib/jquery.simpleWeather.min.js"></script>
 
         <title>new tab</title>
     </head>
 <body>
     <div id="main-page">
         <div id="container">
+
                 <div id="bookmarks">
                     <ul id="bookmark-list">
                       <li> <button id="bookmark-add"> + </button> </li>
-                    </h1>
+                      <div id="add-bookmark">
+                        <form id="bookmark-form">
+                          Name:
+                          <input type="text" name="name"><br>
+                          url:
+                          <input type="text" name="url"><br>
+                          Folder:
+                          <select id="folders" name="folders">
+                            <option>Default</option>
+                            <option>Coffee</option>
+                            <option>Tea</option>
+                          </select> <br>
+                        </form>
+                        <button id="bookmark-create"> Create </button>
+                      </div> <br>
+                    </ul>
                 </div>
 
             <div id="vertical">
+
                 <div id="weather"></div>
+
                 <div id="calendar">
                     <div id="authorize-div">
                     <span>Authorize access to Google Calendar API</span>
@@ -29,14 +47,16 @@
                     </div>
                     <pre id="output"></pre>
                 </div>
+
             </div>
+
          </div>
     </div>
 </body>
 
-    <script type="text/javascript" lang="javascript" src="bookmarks.js"></script>
-    <script type="text/javascript" lang="javascript" src="weather.js"></script>
-    <script type="text/javascript" lang="javascript" src="calendar2.js"></script>
+    <script type="text/javascript" lang="javascript" src="js/bookmarks.js"></script>
+    <script type="text/javascript" lang="javascript" src="js/weather.js"></script>
+    <script type="text/javascript" lang="javascript" src="js/calendar.js"></script>
     <script src="https://apis.google.com/js/client.js?onload=handleClientLoadAuto"></script>
 
 </html>
