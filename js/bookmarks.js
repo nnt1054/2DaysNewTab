@@ -1,10 +1,42 @@
 window.onload = findExtFolder;
-document.getElementById("bookmark-add").addEventListener("click", addBookmark);
+document.getElementById("bookmark-add").addEventListener("click", function(){});
 document.getElementById("bookmark-create").addEventListener("click", addBookmark);
+document.getElementById("folder-create").addEventListener("click", addFolder);
 
 var bm;
 var folders = document.getElementById("folders");
 var nametoid = {};
+
+function addFolder() {
+  var form = document.getElementById("folder-form");
+  if (form.name.value == "" || form.name.value == null) {
+    console.log("lmaooo nice try guy");
+    return;
+  }
+  var object = {
+    parentId: bm.id,
+    title: form.name.value,
+  }
+
+  chrome.bookmarks.create(object, function() {
+    console.log(form.name.value);
+    var blist = document.getElementById("bookmark-list");
+    var li = document.createElement("li");
+    var div = li.appendChild(document.createElement("div"));
+
+    var option = document.createElement("option");
+    option.innerHTML = '<option>' + form.name.value + '</option>';
+    folders.appendChild(option);
+
+    div.innerHTML = '<button class= "folder-btn">' + form.name.value + '</button>'
+    div.firstChild.addEventListener('click', function(){
+      openFolder(div.firstChild.innerHTML);
+    })
+    li.appendChild(div)
+    blist.appendChild(li);
+    form.name.value = null;
+  })
+}
 
 function addBookmark() {
   var form = document.getElementById("bookmark-form");
@@ -32,6 +64,7 @@ function addBookmark() {
     }
     form.name.value = null;
     form.url.value = null;
+    form.folders.value = "Default";
   })
 }
 
@@ -57,28 +90,13 @@ function findExtFolder() {
 }
 
 function openFolder(name) {
-  chrome.bookmarks.getChildren(bm.id, function(children) {
-    var folder;
+  chrome.bookmarks.getChildren(nametoid[name], function(children) {
     children.forEach(function(child) {
-      if (child.title == name) {
-        folder = child;
-      }
+      console.log(child)
+      window.open(child.url, '_blank');
     })
-    if (folder) {
-      chrome.bookmarks.getChildren(folder.id, function(children) {
-        children.forEach(function(child) {
-          console.log(child)
-          window.open(child.url, '_blank');
-        })
-
-      });
-      //window.open('newpage.html', '_blank')
-
-    } else {
-      console.log("folder " + name + " not found");
-    }
-  })
-}
+  });
+};
 
 function display(folder) {
   var blist = document.getElementById("bookmark-list");
