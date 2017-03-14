@@ -97,22 +97,25 @@ ul {
 .event {
   position: absolute;
   width: 50%;
-  border: 1px solid black;
+  border: 1px solid white;
   border-radius: 12px;
   text-align: center;
-  font-weight: bold;
   min-height: 22px;
-  overflow: hidden;
   background-color: white;
   color: black;
   pointer-events: all;
+  overflow: hidden;
 }
 
 .event p {
-  display: inline-block;
-  margin-top: 3px;
+  position: relative;
+  padding: 0px;
+  border: none;
+  margin: 0px;
   z-index: inherit;
   pointer-events: none;
+  font-size: 10pt;
+  font-weight: bold;
 }
 
 .events-list {
@@ -126,10 +129,10 @@ ul {
 }
 
 .hour {
-    height: 100%;
-    z-index: 3;
-    position: relative;
-    pointer-events: none;
+  height: 100%;
+  z-index: 3;
+  position: relative;
+  pointer-events: none;
 }
 
 .day-title {

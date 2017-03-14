@@ -106,27 +106,65 @@ function displaySingleEvent(event) {
   var slot = dayList.children[startTime.getHours() - 6];
 
   var div = document.createElement("div");
-  var span = document.createElement("p");
-  span.style.zIndex = "inherit";
-  span.innerHTML = event.summary;
-  div.appendChild(span);
+  var name = document.createElement("p");
+  name.style.zIndex = "inherit";
+  name.style.paddingTop = "3px";
+  name.innerHTML = event.summary;
+  div.appendChild(name);
+
+  var dateStr = document.createElement("p");
+  dateStr.style.zIndex = "inherit";
+  dateStr.innerHTML = formatAMPM(startTime) + " - " + formatAMPM(endTime);
+  div.appendChild(dateStr);
+
+  var place = document.createElement("p");
+  place.style.zIndex = "inherit";
+  place.style.paddingBottom = "5px";
+  if (event.location) {
+    place.innerHTML = event.location;
+  }
+  div.appendChild(place);
+
+
   div.className = "event"
+  div.draggable = true;
   div.defaultZIndex = dayList.numItems + 6;
   div.style.zIndex = div.defaultZIndex;
-  div.style.height = (duration * 100) + "%";
+  div.defaultHeight = (duration * 100) + "%";
+  div.style.height = div.defaultHeight;
   div.style.top = offset + "%";
-  div.style.left = dayList.numItems*10 + 5 + "%";
+  div.style.left = (dayList.numItems%3)*20 + 5 + "%";
+
   div.onmouseover = function(event){
-    event.target.style.zIndex = 9999;
-    event.target.parentNode.style.zIndex = 9999;
+    var item = event.target;
+    item.style.zIndex = 9999;
+    item.parentNode.style.zIndex = 9999;
+    var preheight = item.offsetHeight;
+    item.style.height = "auto";
+    if (item.offsetHeight < preheight) {
+      item.style.height = item.defaultHeight;
+    }
   }
+
   div.onmouseout = function(event){
-    event.target.style.zIndex = event.target.defaultZIndex;
-    event.target.parentNode.style.zIndex = 3;
+    var item = event.target;
+    item.style.zIndex = event.target.defaultZIndex;
+    item.parentNode.style.zIndex = 3;
+    item.style.height = item.defaultHeight;
   }
 
   dayList.numItems++;
   slot.appendChild(div);
   return 1;
 
+}
+
+function formatAMPM(date) {
+  var hours = date.getHours();
+  var minutes = date.getMinutes();
+  hours = hours % 12;
+  hours = hours ? hours : 12; // the hour '0' should be '12'
+  minutes = minutes < 10 ? '0'+minutes : minutes;
+  var strTime = hours + ':' + minutes;
+  return strTime;
 }
