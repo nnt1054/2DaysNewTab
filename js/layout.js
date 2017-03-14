@@ -40,5 +40,17 @@ function setGrid() {
   }
 }
 
+function addCurrentTime() {
+  var now = new Date();
+  var mins = now.getMinutes();
+  var slot = todayList.children[now.getHours() - 6];
+  if (mins < 30) {
+    slot.style.borderTop = "thin solid red";
+  } else {
+    slot.style.borderBottom = "thin solid red";
+  }
+}
+
 setLabels();
 setGrid();
+addCurrentTime();

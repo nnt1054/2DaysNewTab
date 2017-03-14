@@ -1,4 +1,4 @@
-var CLIENT_ID = '559223177845-tlcomk97jck9d9tjdr27hgs3eu95b5qi.apps.googleusercontent.com';
+var CLIENT_ID = '559223177845-pcv87vtaid3f0imeh6f3g7lc3hqtj1jv.apps.googleusercontent.com';
 var SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"];
 var apiKey = "AIzaSyCdneDaG1uHV0gxjmmw6znWcemFamIy_yA"
 
@@ -65,7 +65,7 @@ function getUpcomingEvents() {
 
   var request = gapi.client.calendar.events.list({
     'calendarId': 'primary',
-    'timeMin': (new Date()).toISOString(),
+    'timeMin': (new Date(today.getFullYear(), today.getMonth(), today.getDate())).toISOString(),
     'showDeleted': false,
     'singleEvents': true,
     'maxResults': 30,
