@@ -1,7 +1,13 @@
+@font-face {
+    font-family: Corbert_Cond_Reg;
+    src: url(../lib/Corbert_Cond_Reg/CorbertCondensed-Regular.otf)
+}
+
 body, html {
     margin: 0;
     padding: 0;
     height: 100%;
+    font-family: Corbert_Cond_Reg;
 }
 
 ul {
@@ -61,6 +67,7 @@ ul {
     width: 45%;
     height: 100%;
     border-left: thin solid white;
+    overflow: hidden;
 }
 
 #tomorrow {
@@ -87,18 +94,42 @@ ul {
     width: 10%;
 }
 
+.event {
+  position: absolute;
+  width: 50%;
+  border: 1px solid black;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: bold;
+  min-height: 22px;
+  overflow: hidden;
+  background-color: white;
+  color: black;
+  pointer-events: all;
+}
+
+.event p {
+  display: inline-block;
+  margin-top: 3px;
+  z-index: inherit;
+  pointer-events: none;
+}
+
 .events-list {
   display: flex;
   flex-direction: column;
+  position: relative;
   padding: 0px;
   margin: 0px;
   height: 100%;
-  z-index: 9;
+  z-index: 4;
 }
 
 .hour {
     height: 100%;
-    z-index: 10;
+    z-index: 3;
+    position: relative;
+    pointer-events: none;
 }
 
 .day-title {

@@ -13,8 +13,8 @@ function makeHourLabel(hour, suffix) {
 
 function setLabels() {
     var am = "AM", pm = "PM";
-    makeHourLabel(12, am);
-    for (var i = 1; i < 12; i++) {
+    //makeHourLabel(12, am);
+    for (var i = 6; i < 12; i++) {
       makeHourLabel(i, am);
     }
     makeHourLabel(12, pm);
@@ -32,10 +32,10 @@ function makeEventSection(list) {
 }
 
 function setGrid() {
-  for (var i = 0; i < 24; i++) {
+  for (var i = 6; i < 24; i++) {
     makeEventSection(todayList);
   }
-  for (var i = 0; i < 24; i++) {
+  for (var i = 6; i < 24; i++) {
     makeEventSection(tommorowList);
   }
 }
