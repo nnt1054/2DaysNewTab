@@ -78,7 +78,7 @@
           'timeMin': (new Date()).toISOString(),
           'showDeleted': false,
           'singleEvents': true,
-          'maxResults': 10,
+          'maxResults': 30,
           'orderBy': 'startTime'
         });
 
