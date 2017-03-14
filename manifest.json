@@ -8,6 +8,8 @@
         "https://ajax.googleapis.com/*",
         "identity",
         "bookmarks",
+        "storage",
+        "unlimitedStorage",
         "https://accounts.google.com/*",
         "identity.email"
       ],

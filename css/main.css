@@ -4,28 +4,36 @@ body, html {
     height: 100%;
 }
 
+ul {
+    list-style: none;
+}
+
 #main-page {
     position: fixed;
     width: 100%;
     height: 100%;
 }
 
+#upload {
+    position: fixed;
+    right: 5px;
+    top: 5px;
+    z-index: 10;
+}
+
 #bookmarks {
     width: 50%;
     height: 100%;
-    background: white;
 }
 
 #weather {
     width: 100%;
     height: 50%;
-    background: yellow;
 }
 
 #calendar {
     width: 100%;
     height: 50%;
-    background: red;
 }
 
 #container {
@@ -39,8 +47,6 @@ body, html {
     flex-direction: column;
     width: 50%;
     height: 100%;
-}
-
-#bookmark-list {
-    list-style: none;
+    
+    color: white;
 }
