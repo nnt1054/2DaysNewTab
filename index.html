@@ -10,11 +10,16 @@
     </head>
 <body>
     <div id="main-page">
-        
+
         <div id ="upload">
-            <button id="upload-btn"> Change Background </button>
+            <button id="upload-btn"> Upload Background </button>
         </div>
-            
+        <div id="authorize-div">
+        <button id="authorize-button">
+            Authorize Google Calendar
+        </button>
+        </div>
+
         <div id="container">
 
                 <div id="bookmarks">
@@ -39,28 +44,36 @@
                         <button id="folder-create"> Add Folder </button>
                       </div> <br>
                     </ul>
+                    <pre id="output"></pre>
                 </div>
 
             <div id="vertical">
 
                 <div id="weather"></div>
 
+                <div id="calendar-header">
+                        <div id="header-spacer"> </div>
+                        <h1 class="day-title"> Today </h1>
+                        <h1 class="day-title"> Tomorrow </h1>
+                </div>
+
                 <div id="calendar">
-                    
+
+                    <div id="time-labels">
+                        <ul id="time-list" class="events-list">
+                        </ul>
+                    </div>
+
                     <div id="today">
-                        <div id="authorize-div">
-                        <span>Authorize access to Google Calendar API</span>
-                        <!--Button for the user to click to initiate auth sequence -->
-                        <button id="authorize-button">
-                            Authorize
-                        </button>
-                        </div>
-                        <pre id="output"></pre>
+                      <ul id="today-list" class="events-list">
+                      </ul>
                     </div>
-                    
+
                     <div id="tomorrow">
+                      <ul id="tomorrow-list" class="events-list">
+                      </ul>
                     </div>
-                    
+
                 </div>
 
             </div>
@@ -69,7 +82,8 @@
     </div>
 </body>
 
-    <script type="text/javascript" lang="javascript" src="js/background.js"></script>    
+    <script type="text/javascript" lang="javascript" src="js/layout.js"></script>
+    <script type="text/javascript" lang="javascript" src="js/background.js"></script>
     <script type="text/javascript" lang="javascript" src="js/bookmarks.js"></script>
     <script type="text/javascript" lang="javascript" src="js/weather.js"></script>
     <script type="text/javascript" lang="javascript" src="js/calendar.js"></script>

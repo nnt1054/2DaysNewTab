@@ -1,0 +1,299 @@
+ol,
+ul {
+    list-style: none outside none
+}
+
+a,
+abbr,
+acronym,
+address,
+applet,
+b,
+big,
+blockquote,
+body,
+caption,
+center,
+cite,
+code,
+dd,
+del,
+dfn,
+div,
+dl,
+dt,
+em,
+fieldset,
+font,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+html,
+i,
+iframe,
+img,
+ins,
+kbd,
+label,
+legend,
+li,
+object,
+ol,
+p,
+pre,
+q,
+s,
+samp,
+small,
+span,
+strike,
+strong,
+sub,
+sup,
+table,
+tbody,
+td,
+tfoot,
+th,
+thead,
+tr,
+tt,
+u,
+ul,
+var {
+    background: none repeat scroll 0 0 transparent;
+    border: 0 none;
+    margin: 0;
+    outline: 0 none;
+    padding: 0;
+    vertical-align: baseline
+}
+
+* {
+    box-sizing: border-box
+}
+
+@font-face {
+    font-family: Cocogoose;
+    src: url(../../fonts/Cocogoose_trial.otf)
+}
+
+@font-face {
+    font-family: Dolce Vita;
+    src: url("../../fonts/Dolce Vita.ttf")
+}
+
+@font-face {
+    font-family: Champagne-Limousines;
+    src: url(../../fonts/Champagne-Limousines.ttf)
+}
+
+@font-face {
+    font-family: basictitlefont;
+    src: url(../../fonts/basictitlefont.ttf)
+}
+
+@font-face {
+    font-family: telegrafico;
+    src: url(../../fonts/telegrafico.ttf)
+}
+
+body,
+html {
+    height: 100%;
+    background: #000;
+    cursor: default
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden
+}
+
+#top-background {
+    width: 100%;
+    height: 100%;
+    background: url(../../images/bedroom.png) center no-repeat fixed;
+    background-size: 140%;
+    z-index: 1
+}
+
+#top-overlay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .6);
+    z-index: 2
+}
+
+#flashlight {
+    background: url(../../images/flashlight.png) center center no-repeat;
+    background-size: cover;
+    height: 4000px;
+    width: 4000px;
+    position: absolute;
+    z-index: 3
+}
+
+#top-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 4
+}
+
+#top-text h1 {
+    color: #00bdda;
+    font: 120px Dolce Vita
+}
+
+#top-text h2,
+#top-text p {
+    color: #fff;
+    font: 50px basictitlefont;
+    width: 60%;
+    text-align: center
+}
+
+#top-text h2 span,
+#top-text p span {
+    color: #b62935
+}
+
+#top-text p {
+    font-size: 14px
+}
+
+#top-text p a {
+    color: #00bdda;
+    transition: all .2s ease
+}
+
+#top-text p a:hover {
+    color: #fff
+}
+
+#basics {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background: url(../../images/starry-night.png) center center no-repeat fixed;
+    background-size: cover
+}
+
+#basics #basics-overlay {
+    background: rgba(0, 0, 0, .6);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1
+}
+
+#basics #basics-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 2
+}
+
+#basics #basics-content h1 {
+    font: 70px Dolce Vita;
+    color: #00bdda;
+    padding: 30px 0 10px 0
+}
+
+#basics #basics-content p {
+    font: 35px basictitlefont;
+    color: #fff
+}
+
+#basics #basics-content #basics-cards {
+    text-align: center;
+    margin: 30px
+}
+
+#basics #basics-content #basics-cards p {
+    font: 35px Cocogoose;
+    color: #b62935
+}
+
+#basics #basics-content #basics-cards div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center
+}
+
+#basics #basics-content #basics-cards div div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    float: left;
+    padding: 70px 20px;
+    margin: 40px;
+    border: 1px solid #fff;
+    background: rgba(255, 255, 255, .3);
+    border-radius: 5px;
+    width: 40%;
+    flex-wrap: wrap
+}
+
+#basics #basics-content #basics-cards div div p {
+    font: 20px Cocogoose;
+    color: #fff;
+    text-align: center;
+    width: 100%
+}
+
+#basics #basics-content #basics-cards div div button {
+    outline: 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all .15s ease;
+    font: 20px basictitlefont;
+    height: 50px;
+    width: 100px;
+    margin: 25px;
+    background-color: #423e35;
+    color: #fff;
+    border: 1px solid #000;
+    box-shadow: 2px 3px #000
+}
+
+#basics #basics-content #basics-cards div div button:hover {
+    background-color: #00bdda
+}
+
+#basics #basics-content #basics-cards div div button:active {
+    background-color: #423e35;
+    box-shadow: 1px 2px #000
+}

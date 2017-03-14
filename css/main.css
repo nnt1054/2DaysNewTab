@@ -21,6 +21,13 @@ ul {
     z-index: 3;
 }
 
+#authorize-div {
+  position: fixed;
+  right: 5px;
+  top: 30px;
+  z-index: 3;
+}
+
 #bookmarks {
     width: 50%;
     height: 100%;
@@ -28,7 +35,14 @@ ul {
 
 #weather {
     width: 100%;
-    height: 20%;
+    height: 16%;
+}
+
+#calendar-header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 4%;
 }
 
 #calendar {
@@ -38,16 +52,21 @@ ul {
     height: 80%;
 }
 
-#today {
-    width: 50%;
+#time-labels {
+    width: 10%;
     height: 100%;
-    background-color: red;
+}
+
+#today {
+    width: 45%;
+    height: 100%;
+    border-left: thin solid white;
 }
 
 #tomorrow {
-    width: 50%;
+    width: 45%;
     height: 100%;
-    background-color: blue;
+    border-left: thin solid white;
 }
 
 #container {
@@ -61,6 +80,31 @@ ul {
     flex-direction: column;
     width: 50%;
     height: 100%;
-    
     color: white;
+}
+
+#header-spacer {
+    width: 10%;
+}
+
+.events-list {
+  display: flex;
+  flex-direction: column;
+  padding: 0px;
+  margin: 0px;
+  height: 100%;
+  z-index: 9;
+}
+
+.hour {
+    height: 100%;
+    z-index: 10;
+}
+
+.day-title {
+  position: relative;
+  padding: 0px;
+  margin: 0px;
+  width: 45%;
+  padding-left: 20px;
 }

@@ -16,7 +16,7 @@
       "chrome_url_overrides" : {"newtab" : "index.html"},
     "content_scripts": [{
       "js": ["lib/jquery-3.1.1.min.js", "lib/jquery.simpleWeather.min.js", "js/calendar.js",
-        "js/weather.js", "js/bookmarks.js"],
+        "js/weather.js", "js/bookmarks.js", "js/layout.js"],
     "matches": ["http://*/*", "https://*/*"] }],
     "content_security_policy": "script-src 'self' https://apis.google.com https://query.yahooapis.com; object-src 'self'",
     "oauth2": {
