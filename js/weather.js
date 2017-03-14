@@ -12,7 +12,7 @@ function getCoords() {
    getCoords();
    setInterval(loadWeather, 10000);
  })
- 
+
 
  function loadWeather(location, woeid) {
        $.simpleWeather({
@@ -33,5 +33,5 @@ function handleWeather(weather) {
     html += '<ul><li>'+weather.city+', '+weather.region+'</li>';
     html += '<li class="currently">'+weather.currently+'</li>';
     html += '<li>'+weather.wind.direction+' '+weather.wind.speed+' '+weather.units.speed+'</li></ul>';
-    $("#weather").html(html);   
+    $("#weather").html(html);
 }

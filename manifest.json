@@ -23,7 +23,7 @@
         "client_id": "559223177845-tlcomk97jck9d9tjdr27hgs3eu95b5qi.apps.googleusercontent.com",
         "scopes": [
             "https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/userinfo.email",
-            "https://www.googleapis.com/auth/calendar.readonly",
+            "https://www.googleapis.com/auth/calendar",
             "https://www.googleapis.com/auth/plus.login",
             "https://www.googleapis.com/auth/plus.me"
         ]
