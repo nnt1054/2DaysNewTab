@@ -139,22 +139,27 @@ function displaySingleEvent(event) {
     var item = event.target;
     item.style.zIndex = 9999;
     item.parentNode.style.zIndex = 9999;
-    var preheight = item.offsetHeight;
-    item.style.height = "auto";
-    if (item.offsetHeight < preheight) {
-      item.style.height = item.defaultHeight;
-    }
+    item.style.height = item.autoHeight + "px";
   }
 
   div.onmouseout = function(event){
     var item = event.target;
     item.style.zIndex = event.target.defaultZIndex;
     item.parentNode.style.zIndex = 3;
-    item.style.height = item.defaultHeight;
+    item.style.height = item.smallHeight + "px";
   }
 
   dayList.numItems++;
   slot.appendChild(div);
+    
+  div.smallHeight = div.offsetHeight;
+  div.style.height = "auto";
+  div.autoHeight = div.offsetHeight;
+  if (div.autoHeight < div.smallHeight) {
+    div.autoHeight = div.smallHeight;
+  }
+  div.style.height = div.smallHeight + "px";
+    
   return 1;
 
 }

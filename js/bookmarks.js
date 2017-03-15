@@ -1,11 +1,19 @@
 window.onload = findExtFolder;
-document.getElementById("bookmark-add").addEventListener("click", function(){});
+document.getElementById("bookmark-add").addEventListener("click", showForms);
 document.getElementById("bookmark-create").addEventListener("click", addBookmark);
 document.getElementById("folder-create").addEventListener("click", addFolder);
 
 var bm;
 var folders = document.getElementById("folders");
 var nametoid = {};
+
+function showForms() {
+  console.log("do something");
+  document.body.classList.toggle("overlay");
+  document.getElementById("main-page").classList.toggle("overlay");
+  var marks = document.getElementById("add-bookmark");
+  marks.classList.toggle("show");
+}
 
 function addFolder() {
   var form = document.getElementById("folder-form");
@@ -23,7 +31,7 @@ function addFolder() {
     var div = li.appendChild(document.createElement("div"));
 
     var option = document.createElement("option");
-    option.innerHTML = '<option>' + form.name.value + '</option>';
+    option.innerHTML = form.name.value;
     folders.appendChild(option);
 
     div.innerHTML = '<button class= "folder-btn">' + form.name.value + '</button>'

@@ -4,20 +4,54 @@
 }
 
 body, html {
+    position: relative;
     margin: 0;
     padding: 0;
     height: 100%;
     font-family: Corbert_Cond_Reg;
+    font-weight: bold;
 }
 
 ul {
     list-style: none;
 }
 
+input[type=text], select {
+    width: 100%;
+    padding: 6px 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+select {
+    font-size: 12pt;
+}
+
+form > button {
+    background-color: gray;
+    padding: 5px 10px;
+    border-radius: 2px;
+    border: none;
+    color: white;
+    text-align: center;
+    display: inline-block;
+    font-size: 16pt;
+}
+
 #main-page {
-    position: fixed;
+    position: relative;
     width: 100%;
     height: 100%;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: rgba(0,0,0,0.5);
 }
 
 #upload {
@@ -94,17 +128,58 @@ ul {
     width: 10%;
 }
 
+#bookmark-form {
+    width: 100%;
+    border-bottom: thin solid gray;   
+}
+
+#folder-form {
+    padding-top: 25px;   
+}
+
+form > button {
+    float: right;
+}
+
+form > input {
+    margin-bottom: 30px;
+    width: 95%;
+}
+
+.popup {
+    position: absolute;
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    border: thick solid white;
+    font-size: 16pt;
+    overflow: hidden;
+    height: 0px;   
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: all 0.1s linear 0s;
+    transition: all 0.1s linear 0s;
+}
+
+.show {
+    height: 420px;
+    opacity: 1.0;
+    visibility: visible;
+}
+
 .event {
   position: absolute;
   width: 50%;
-  border: 1px solid white;
   border-radius: 12px;
   text-align: center;
-  min-height: 22px;
+  min-height: 35px;
   background-color: white;
   color: black;
   pointer-events: all;
   overflow: hidden;
+  -webkit-transition: all 0.1s linear 0s;
+  transition: all 0.1s linear 0s;
 }
 
 .event p {

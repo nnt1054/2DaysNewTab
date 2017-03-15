@@ -9,6 +9,7 @@
         <title>new tab</title>
     </head>
 <body>
+    <div id="overlay"></div>
     <div id="main-page">
 
         <div id ="upload">
@@ -25,25 +26,26 @@
                 <div id="bookmarks">
                     <ul id="bookmark-list">
                       <li> <button id="bookmark-add"> + </button> </li>
-                      <div id="add-bookmark">
+                      <div id="add-bookmark" class="popup">
                         <form id="bookmark-form">
-                          Name:
+                          Bookmark Name:<br>
                           <input type="text" name="name"><br>
-                          url:
+                          URL:<br>
                           <input type="text" name="url"><br>
-                          Folder:
+                          Folder:<br>
                           <select id="folders" name="folders">
                             <option>Default</option>
                           </select> <br>
+                          <button id="bookmark-create"> Add Bookmark </button> <br> <br>
                         </form>
-                        <button id="bookmark-create"> Create </button> <br>
                         <form id="folder-form">
-                          Name:
+                          Folder Name:
                           <input type="text" name="name"><br>
+                          <button id="folder-create"> Add Folder </button>
                         </form>
-                        <button id="folder-create"> Add Folder </button>
                       </div> <br>
-                    </ul>                </div>
+                    </ul>
+                </div>
 
             <div id="vertical">
 
