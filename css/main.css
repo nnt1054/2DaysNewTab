@@ -39,19 +39,28 @@ form > button {
 }
 
 #main-page {
-    position: relative;
+    position: absolute;
     width: 100%;
     height: 100%;
 }
 
-.overlay {
+#overlay-div {
+  z-index: -1;
+  pointer-events: none;
+  -webkit-transition: all 0.15s linear 0s;
+  transition: all 0.15s linear 0s;
+}
+
+#overlay-div.overlay {
   position: absolute;
+  pointer-events: all;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 10;
-  background-color: rgba(0,0,0,0.5);
+  z-index: 100;
+  opacity: 0.9;
+  background: black;
 }
 
 #upload {
@@ -71,6 +80,11 @@ form > button {
 #bookmarks {
     width: 50%;
     height: 100%;
+}
+
+#bookmark-list {
+    display: flex;
+    flex-direction: column;
 }
 
 #weather {
@@ -116,7 +130,7 @@ form > button {
     height: 100%;
 }
 
-#vertical {
+.vertical {
     display: flex;
     flex-direction: column;
     width: 50%;
@@ -130,11 +144,16 @@ form > button {
 
 #bookmark-form {
     width: 100%;
-    border-bottom: thin solid gray;   
+    border-bottom: thin solid gray;
 }
 
 #folder-form {
-    padding-top: 25px;   
+    padding-top: 25px;
+}
+
+#bookmark-add {
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 form > button {
@@ -146,6 +165,26 @@ form > input {
     width: 95%;
 }
 
+.single-bookmark {
+    position: relative;
+    width: 100px;
+    border-radius: 12px;
+    text-align: center;
+    min-height: 35px;
+    background: rgba(0,0,0,.3);
+    color: white;
+    margin-bottom: 10px;
+}
+
+.single-bookmark:hover {
+    background-color: white;
+    color: black;
+}
+
+.single-bookmark > p {
+    color: white;
+}
+
 .popup {
     position: absolute;
     background-color: white;
@@ -154,15 +193,17 @@ form > input {
     border: thick solid white;
     font-size: 16pt;
     overflow: hidden;
-    height: 0px;   
-    display: block;
+    height: 0px;
     opacity: 0;
     visibility: hidden;
+    margin-top: 30px;
+    z-index: 500;
     -webkit-transition: all 0.1s linear 0s;
     transition: all 0.1s linear 0s;
 }
 
 .show {
+    display: block;
     height: 420px;
     opacity: 1.0;
     visibility: visible;
@@ -174,10 +215,10 @@ form > input {
   border-radius: 12px;
   text-align: center;
   min-height: 35px;
-  background-color: white;
-  color: black;
+  color: white;
   pointer-events: all;
   overflow: hidden;
+  background: rgba(0,0,0,.5);
   -webkit-transition: all 0.1s linear 0s;
   transition: all 0.1s linear 0s;
 }

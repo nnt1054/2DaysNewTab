@@ -1,4 +1,6 @@
-var CLIENT_ID = '559223177845-pcv87vtaid3f0imeh6f3g7lc3hqtj1jv.apps.googleusercontent.com';
+//var CLIENT_ID = '559223177845-pcv87vtaid3f0imeh6f3g7lc3hqtj1jv.apps.googleusercontent.com'; chromebook
+var CLIENT_ID = '559223177845-orlvkhl9pkq9jf7f98gf7qepmp6iuqda.apps.googleusercontent.com'; //thinkpad
+
 var SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"];
 var apiKey = "AIzaSyCdneDaG1uHV0gxjmmw6znWcemFamIy_yA"
 
@@ -151,7 +153,7 @@ function displaySingleEvent(event) {
 
   dayList.numItems++;
   slot.appendChild(div);
-    
+
   div.smallHeight = div.offsetHeight;
   div.style.height = "auto";
   div.autoHeight = div.offsetHeight;
@@ -159,7 +161,7 @@ function displaySingleEvent(event) {
     div.autoHeight = div.smallHeight;
   }
   div.style.height = div.smallHeight + "px";
-    
+
   return 1;
 
 }

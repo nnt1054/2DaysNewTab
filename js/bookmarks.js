@@ -2,6 +2,7 @@ window.onload = findExtFolder;
 document.getElementById("bookmark-add").addEventListener("click", showForms);
 document.getElementById("bookmark-create").addEventListener("click", addBookmark);
 document.getElementById("folder-create").addEventListener("click", addFolder);
+document.getElementById("overlay-div").addEventListener("click", showForms);
 
 var bm;
 var folders = document.getElementById("folders");
@@ -10,7 +11,7 @@ var nametoid = {};
 function showForms() {
   console.log("do something");
   document.body.classList.toggle("overlay");
-  document.getElementById("main-page").classList.toggle("overlay");
+  document.getElementById("overlay-div").classList.toggle("overlay");
   var marks = document.getElementById("add-bookmark");
   marks.classList.toggle("show");
 }
@@ -113,14 +114,28 @@ function display(folder) {
       nametoid[child.title] = child.id;
       var li = document.createElement("li");
       var div = li.appendChild(document.createElement("div"));
+      li.className = "single-bookmark";
       if (child.url) {
-        div.innerHTML = '<button> <a href="' + child.url + '">' + child.title + '</a> </button>'
+        var name = document.createElement("p");
+        name.innerHTML = child.title;
+        name.style.paddingTop = "3px";
+        div.appendChild(name);
+
+        li.addEventListener('click', function(event){
+          window.open(child.url,"_self");
+        })
+
       } else {
         var option = document.createElement("option");
         option.innerHTML = '<option>' + child.title + '</option>';
         folders.appendChild(option);
-        div.innerHTML = '<button class= "folder-btn">' + child.title + '</button>'
-        div.firstChild.addEventListener('click', function(){
+
+        var name = document.createElement("p");
+        name.innerHTML = child.title;
+        name.style.paddingTop = "3px";
+        div.appendChild(name);
+
+        li.addEventListener('click', function(){
           openFolder(div.firstChild.innerHTML);
         })
       }

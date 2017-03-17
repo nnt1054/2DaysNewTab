@@ -44,6 +44,9 @@ function addCurrentTime() {
   var now = new Date();
   var mins = now.getMinutes();
   var slot = todayList.children[now.getHours() - 6];
+  if (!slot) {
+    return;
+  }
   if (mins < 30) {
     slot.style.borderTop = "thin solid red";
   } else {
