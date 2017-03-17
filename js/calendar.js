@@ -130,8 +130,6 @@ function displaySingleEvent(event) {
 
   div.className = "event"
   div.draggable = true;
-  div.defaultZIndex = dayList.numItems + 6;
-  div.style.zIndex = div.defaultZIndex;
   div.defaultHeight = (duration * 100) + "%";
   div.style.height = div.defaultHeight;
   div.style.top = offset + "%";
@@ -151,8 +149,16 @@ function displaySingleEvent(event) {
     item.style.height = item.smallHeight + "px";
   }
 
+  div.defaultZIndex = dayList.numItems + 6;
+  if (slot.children.length) {
+    div.defaultZIndex = slot.children[slot.children.length - 1].style.zIndex;
+    slot.insertBefore(div, slot.children[0]);
+  } else {
+    slot.appendChild(div);
+  }
+  div.style.zIndex = div.defaultZIndex;
   dayList.numItems++;
-  slot.appendChild(div);
+  //slot.appendChild(div);
 
   div.smallHeight = div.offsetHeight;
   div.style.height = "auto";

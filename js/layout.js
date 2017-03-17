@@ -25,9 +25,7 @@ function setLabels() {
 
 function makeEventSection(list) {
   var li = document.createElement("li");
-  var div = document.createElement("div");
   li.className = "hour";
-  li.appendChild(div);
   list.appendChild(li);
 }
 
