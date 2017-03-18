@@ -9,7 +9,6 @@
         <title>New Tab</title>
     </head>
 <body>
-    <div id="overlay"></div>
     <div id="main-page">
 
         <div id ="upload">
@@ -23,9 +22,10 @@
 
         <div id="container">
 
+            <div class="vertical">
                 <div id="bookmarks">
                     <ul id="bookmark-list">
-                      <li> <button id="bookmark-add"> + </button> </li>
+                        <li id="bookmark-add" class="single-bookmark"> <p> New Bookmark </p> </li>
                       <div id="overlay-div"></div>
                       <div id="add-bookmark" class="popup">
                         <form id="bookmark-form">
@@ -47,7 +47,14 @@
                       </div>
                     </ul>
                 </div>
-
+                
+                <div id="clock" class="vertical">
+                    <div id="hour-minute"></div>
+                    <div id="day-month-date-year"></div>
+                </div>
+                
+            </div>
+            
             <div class="vertical">
 
                 <div id="weather"></div>
@@ -88,6 +95,7 @@
     <script type="text/javascript" lang="javascript" src="js/bookmarks.js"></script>
     <script type="text/javascript" lang="javascript" src="js/weather.js"></script>
     <script type="text/javascript" lang="javascript" src="js/calendar.js"></script>
+    <script type="text/javascript" lang="javascript" src="js/clock.js"></script>
     <script src="https://apis.google.com/js/client.js?onload=handleClientLoadAuto"></script>
 
 </html>

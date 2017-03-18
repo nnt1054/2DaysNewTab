@@ -1,5 +1,5 @@
-//var CLIENT_ID = '559223177845-pcv87vtaid3f0imeh6f3g7lc3hqtj1jv.apps.googleusercontent.com'; chromebook
-var CLIENT_ID = '559223177845-orlvkhl9pkq9jf7f98gf7qepmp6iuqda.apps.googleusercontent.com'; //thinkpad
+var CLIENT_ID = '559223177845-pcv87vtaid3f0imeh6f3g7lc3hqtj1jv.apps.googleusercontent.com'; //chromebook
+//var CLIENT_ID = '559223177845-orlvkhl9pkq9jf7f98gf7qepmp6iuqda.apps.googleusercontent.com'; //thinkpad
 
 var SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"];
 var apiKey = "AIzaSyCdneDaG1uHV0gxjmmw6znWcemFamIy_yA"
@@ -133,7 +133,7 @@ function displaySingleEvent(event) {
   div.defaultHeight = (duration * 100) + "%";
   div.style.height = div.defaultHeight;
   div.style.top = offset + "%";
-  div.style.left = (dayList.numItems%3)*20 + 5 + "%";
+  div.style.left = (dayList.numItems%4)*13 + 5 + "%";
 
   div.onmouseover = function(event){
     var item = event.target;
@@ -158,7 +158,6 @@ function displaySingleEvent(event) {
   }
   div.style.zIndex = div.defaultZIndex;
   dayList.numItems++;
-  //slot.appendChild(div);
 
   div.smallHeight = div.offsetHeight;
   div.style.height = "auto";

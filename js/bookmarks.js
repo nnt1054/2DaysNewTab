@@ -9,9 +9,14 @@ var folders = document.getElementById("folders");
 var nametoid = {};
 
 function showForms() {
-  console.log("do something");
-  document.body.classList.toggle("overlay");
   document.getElementById("overlay-div").classList.toggle("overlay");
+  var add_btn = document.getElementById("bookmark-add");
+  add_btn.classList.toggle("cancel");
+  if (add_btn.children[0].innerHTML == "Cancel") {
+    add_btn.children[0].innerHTML = "New Bookmark";
+  } else {
+    add_btn.children[0].innerHTML = "Cancel"   
+  }
   var marks = document.getElementById("add-bookmark");
   marks.classList.toggle("show");
 }
