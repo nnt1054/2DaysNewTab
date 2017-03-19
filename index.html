@@ -5,21 +5,20 @@
         <meta charset="UTF-8">
         <script type="text/javascript" lang="javascript" src="lib/jquery-3.1.1.min.js"></script>
         <script type="text/javascript" lang="javascript" src="lib/jquery.simpleWeather.min.js"></script>
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <title>New Tab</title>
     </head>
 <body>
-    <div id="main-page">
-
-        <div id ="upload">
+    <div id="settings-btn">
+        <i id="settings-icon" class="fa fa-cog fa-3x" aria-hidden="true"></i>
+    </div>
+    <div id="settings-menu">
+        
+    </div>
+    <div id ="upload">
             <button id="upload-btn"> Upload Background </button>
-        </div>
-        <div id="authorize-div">
-        <button id="authorize-button">
-            Authorize Google Calendar
-        </button>
-        </div>
-
+    </div>
+    <div id="main-page">
         <div id="container">
 
             <div class="vertical">
@@ -63,6 +62,9 @@
                         <div id="header-spacer"> </div>
                         <h1 class="day-title"> Today </h1>
                         <h1 class="day-title"> Tomorrow </h1>
+                        <div id="authorize-div">
+                            <div id="authorize-button" class="calendar-btn"> <p> Login </p> </div>
+                        </div>
                 </div>
 
                 <div id="calendar">
@@ -96,6 +98,7 @@
     <script type="text/javascript" lang="javascript" src="js/weather.js"></script>
     <script type="text/javascript" lang="javascript" src="js/calendar.js"></script>
     <script type="text/javascript" lang="javascript" src="js/clock.js"></script>
+    <script type="text/javascript" lang="javascript" src="js/settings.js"></script>
     <script src="https://apis.google.com/js/client.js?onload=handleClientLoadAuto"></script>
 
 </html>

@@ -34,15 +34,15 @@ var checkAuthAuto = function () {
 }
 
 function handleAuthResult(authResult) {
-  var authorizeDiv = document.getElementById('authorize-div');
+  var authorizeBtn = document.getElementById('authorize-button');
   if (authResult && !authResult.error) {
     // Hide auth UI, then load client library.
-    authorizeDiv.style.display = 'none';
+    authorizeBtn.children[0].innerHTML = "Sync";
     loadCalendarApi();
   } else {
     // Show auth UI, allowing the user to initiate authorization by
     // clicking authorize button.
-    authorizeDiv.style.display = 'inline';
+    authorizeBtn.style.display = 'inline';
   }
 }
 
