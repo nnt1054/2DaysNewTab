@@ -2,7 +2,6 @@ window.onload = findExtFolder;
 document.getElementById("bookmark-add").addEventListener("click", showForms);
 document.getElementById("bookmark-create").addEventListener("click", addBookmark);
 document.getElementById("folder-create").addEventListener("click", addFolder);
-document.getElementById("overlay-div").addEventListener("click", showForms);
 
 var bm;
 var folders = document.getElementById("folders");
@@ -10,15 +9,17 @@ var nametoid = {};
 
 function showForms() {
   document.getElementById("overlay-div").classList.toggle("overlay");
+  document.getElementById("overlay-div").removeEventListener("click", showSettings);
+  document.getElementById("overlay-div").addEventListener("click", showForms);
   var add_btn = document.getElementById("bookmark-add");
   add_btn.classList.toggle("cancel");
   if (add_btn.children[0].innerHTML == "Cancel") {
     add_btn.children[0].innerHTML = "New Bookmark";
   } else {
-    add_btn.children[0].innerHTML = "Cancel"   
+    add_btn.children[0].innerHTML = "Cancel"
   }
   var marks = document.getElementById("add-bookmark");
-  marks.classList.toggle("show");
+  marks.classList.toggle("showh");
 }
 
 function addFolder() {

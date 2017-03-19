@@ -7,25 +7,28 @@ if (imgurl) {
 }
 
 var old;
-var btn = document.getElementById("upload-btn")
+var btn = document.getElementById("upload-btn-id")
 btn.addEventListener("click", showUploadBtn);
 
 function showUploadBtn() {
     var x = document.createElement("INPUT");
     x.setAttribute("type", "file");
     x.setAttribute("accept", "image/*");
+    x.classList.toggle("upload-btn")
     x.onchange = gotImage;
 
-    document.getElementById("upload").replaceChild(x, btn);
+    document.getElementById("settings-popup").replaceChild(x, btn);
     btn = x;
 }
 
 function removeUploadBtn() {
     var x = document.createElement("BUTTON");
     x.innerHTML = "Change Background";
+    x.setAttribute("id", "upload-btn-id");
+    x.classList.toggle("upload-btn")
     x.addEventListener("click", showUploadBtn);
 
-    document.getElementById("upload").replaceChild(x, btn);
+    document.getElementById("settings-popup").replaceChild(x, btn);
     btn = x;
 }
 

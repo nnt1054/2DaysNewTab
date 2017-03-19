@@ -1,5 +1,5 @@
-var CLIENT_ID = '559223177845-pcv87vtaid3f0imeh6f3g7lc3hqtj1jv.apps.googleusercontent.com'; //chromebook
-//var CLIENT_ID = '559223177845-orlvkhl9pkq9jf7f98gf7qepmp6iuqda.apps.googleusercontent.com'; //thinkpad
+//var CLIENT_ID = '559223177845-pcv87vtaid3f0imeh6f3g7lc3hqtj1jv.apps.googleusercontent.com'; //chromebook
+var CLIENT_ID = '559223177845-orlvkhl9pkq9jf7f98gf7qepmp6iuqda.apps.googleusercontent.com'; //thinkpad
 
 var SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"];
 var apiKey = "AIzaSyCdneDaG1uHV0gxjmmw6znWcemFamIy_yA"
@@ -51,33 +51,45 @@ function handleAuthResult(authResult) {
 * once client library is loaded.
 */
 function loadCalendarApi() {
-  gapi.client.load('calendar', 'v3', getUpcomingEvents);
+  gapi.client.load('calendar', 'v3', getColors);
 }
 
-/**
-* Print the summary and start datetime/date of the next 30 events in
-* the authorized user's calendar. If no events are found an
-* appropriate message is printed.
-*/
-function getUpcomingEvents() {
+function getColors() {
   var crequest = gapi.client.calendar.colors.get({});
   crequest.execute(function(response) {
     colors = response;
+    getListOfCalendars();
+  })
+}
+
+function getListOfCalendars() {
+  var cListRequest = gapi.client.calendar.calendarList.list({});
+  cListRequest.execute(function(response) {
+    var calendarList = response.items;
+    for (var i = 0; i < calendarList.length; i++) {
+        getUpcomingEvents(calendarList[i]);
+    }
   })
 
+}
+
+function getUpcomingEvents(cal) {
+
   var request = gapi.client.calendar.events.list({
-    'calendarId': 'primary',
+    'calendarId': cal.id,
     'timeMin': (new Date(today.getFullYear(), today.getMonth(), today.getDate())).toISOString(),
     'showDeleted': false,
     'singleEvents': true,
     'maxResults': 30,
     'orderBy': 'startTime'
   });
-  request.execute(displayEvents);
-
+  request.execute(function(response) {
+    displayEvents(response, cal);
+  });
 }
 
-function displayEvents(response) {
+function displayEvents(response, cal) {
+  console.log(cal.colorId);
   events = response;
   todayList.numItems = 0;
   tomorrowList.numItems = 0;
@@ -85,12 +97,12 @@ function displayEvents(response) {
   var i = 0;
   var loop = 1;
   while ((i < len) && loop) {
-    var loop = displaySingleEvent(events.items[i]);
+    var loop = displaySingleEvent(events.items[i], cal.colorId);
     i++;
   }
 }
 
-function displaySingleEvent(event) {
+function displaySingleEvent(event, calColor) {
   var startTime = new Date(event.start.dateTime);
   var endTime = new Date(event.end.dateTime);
   var duration = endTime.getTime() - startTime.getTime();
@@ -111,6 +123,7 @@ function displaySingleEvent(event) {
   var name = document.createElement("p");
   name.style.zIndex = "inherit";
   name.style.paddingTop = "3px";
+
   name.innerHTML = event.summary;
   div.appendChild(name);
 
@@ -131,6 +144,17 @@ function displaySingleEvent(event) {
   div.className = "event"
   div.draggable = true;
   div.defaultHeight = (duration * 100) + "%";
+
+  console.log(colors);
+  if (event.colorId) {
+    var RGB = colors.event[event.colorId].background;
+  } else {
+    var RGB = colors.calendar[calColor].background;
+  }
+  var A = 0.3;
+  var colorStr = 'rgba('+parseInt(RGB.substring(1,3),16)+','+parseInt(RGB.substring(3,5),16)+','+parseInt(RGB.substring(5,7),16)+','+A+')';
+
+  div.style.background = colorStr;
   div.style.height = div.defaultHeight;
   div.style.top = offset + "%";
   div.style.left = (dayList.numItems%4)*13 + 5 + "%";
@@ -140,6 +164,8 @@ function displaySingleEvent(event) {
     item.style.zIndex = 9999;
     item.parentNode.style.zIndex = 9999;
     item.style.height = item.autoHeight + "px";
+    div.style.background = "white";
+
   }
 
   div.onmouseout = function(event){
@@ -147,6 +173,7 @@ function displaySingleEvent(event) {
     item.style.zIndex = event.target.defaultZIndex;
     item.parentNode.style.zIndex = 3;
     item.style.height = item.smallHeight + "px";
+    div.style.background = colorStr;
   }
 
   div.defaultZIndex = dayList.numItems + 6;

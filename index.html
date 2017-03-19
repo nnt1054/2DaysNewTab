@@ -12,12 +12,59 @@
     <div id="settings-btn">
         <i id="settings-icon" class="fa fa-cog fa-3x" aria-hidden="true"></i>
     </div>
-    <div id="settings-menu">
-        
+
+    <div id="settings-menu"  class="popupw">
+        <div id="settings-popup">
+          <button id="upload-btn-id" class="upload-btn"> Change Background </button>
+          <form id="settings-form">
+            <li id="calendar-select">
+                <h5> Calendar List: </h5>
+                <ul id="calendar-list">
+                    <li> <input type="checkbox" name="bike1" class="cal-checkbox"/> <p> I have a bike </p> </li>
+                    <li> <input type="checkbox" name="bike1" class="cal-checkbox"/> <p> I have a bike </p> </li>
+                    <li> <input type="checkbox" name="bike1" class="cal-checkbox"/> <p> I have a bike </p> </li>
+                    <li> <input type="checkbox" name="bike1" class="cal-checkbox"/> <p> I have a bike </p> </li>
+                    <li> <input type="checkbox" name="bike1" class="cal-checkbox"/> <p> I have a bike </p> </li>
+                    <li> <input type="checkbox" name="bike1" class="cal-checkbox"/> <p> I have a bike </p> </li>
+                </ul>
+            <li>
+            <li id="layout-select">
+                <h5> Starting Hour: </h5>
+                <select class="hour-select" name="start-hour" value="6 AM">
+                  <option>12 AM</option>
+                  <option>1 AM</option>
+                  <option>2 AM</option>
+                  <option>3 AM</option>
+                  <option>4 AM</option>
+                  <option>5 AM</option>
+                  <option>6 AM</option>
+                  <option>7 AM</option>
+                  <option>8 AM</option>
+                  <option>9 AM</option>
+                  <option>10 AM</option>
+                  <option>11 AM</option>
+                </select>
+                <h5> Ending Hour: </h5>
+                <select class="hour-select" name="end-hour" value="12 PM">
+                  <option>12 PM</option>
+                  <option>1 PM</option>
+                  <option>2 PM</option>
+                  <option>3 PM</option>
+                  <option>4 PM</option>
+                  <option>5 PM</option>
+                  <option>6 PM</option>
+                  <option>7 PM</option>
+                  <option>8 PM</option>
+                  <option>9 PM</option>
+                  <option>10 PM</option>
+                  <option>11 PM</option>
+                </select>
+                <p id="hour-note"> *Note: Events outside of the range will not be displayed </p>
+            </li>
+          </form>
+        </div>
     </div>
-    <div id ="upload">
-            <button id="upload-btn"> Upload Background </button>
-    </div>
+
     <div id="main-page">
         <div id="container">
 
@@ -26,7 +73,7 @@
                     <ul id="bookmark-list">
                         <li id="bookmark-add" class="single-bookmark"> <p> New Bookmark </p> </li>
                       <div id="overlay-div"></div>
-                      <div id="add-bookmark" class="popup">
+                      <div id="add-bookmark" class="popuph">
                         <form id="bookmark-form">
                           Bookmark Name:<br>
                           <input type="text" name="name"><br>
@@ -46,14 +93,14 @@
                       </div>
                     </ul>
                 </div>
-                
+
                 <div id="clock" class="vertical">
                     <div id="hour-minute"></div>
                     <div id="day-month-date-year"></div>
                 </div>
-                
+
             </div>
-            
+
             <div class="vertical">
 
                 <div id="weather"></div>
