@@ -478,12 +478,12 @@ form > input {
   margin: auto;
   margin-left: 5px;
   padding: 0px;
-  font-size: 16pt;
+  font-size: 12pt;
 }
 
 .cal-checkbox {
-  height: 25px;
-  width: 25px;
+  height: 20px;
+  width: 20px;
   margin: 0px;
   padding: 0px;
   z-index: 1000;
@@ -492,7 +492,7 @@ form > input {
 #layout-select {
   display: flex;
   flex-direction: row;
-  align-items: baseline;
+  align-items: center;
 }
 
 .hour-select {
