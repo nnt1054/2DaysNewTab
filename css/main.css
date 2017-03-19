@@ -492,7 +492,7 @@ form > input {
 #layout-select {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: baseline;
 }
 
 .hour-select {
