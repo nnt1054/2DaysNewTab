@@ -87,7 +87,7 @@ function findExtFolder() {
   chrome.bookmarks.getChildren('2', function(children) {
       var folder;
       children.forEach(function(child) {
-        if (child.title == "test") {
+        if (child.title == "2Day Bookmarks") {
           folder = child;
         }
       });

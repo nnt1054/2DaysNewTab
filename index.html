@@ -20,18 +20,11 @@
             <li id="calendar-select">
                 <h5> Calendar List: </h5>
                 <ul id="calendar-list">
-                    <li> <input type="checkbox" name="bike1" class="cal-checkbox"/> <p> Primary </p> </li>
-                    <li> <input type="checkbox" name="bike1" class="cal-checkbox"/> <p> Work Calendar </p> </li>
-                    <li> <input type="checkbox" name="bike1" class="cal-checkbox"/> <p> Birthdays </p> </li>
-                    <li> <input type="checkbox" name="bike1" class="cal-checkbox"/> <p> Holidays </p> </li>
-                    <li> <input type="checkbox" name="bike1" class="cal-checkbox"/> <p> Lol Hey Don't Look at Me </p> </li>
-                    <li> <input type="checkbox" name="bike1" class="cal-checkbox"/> <p> I like to cry myself to Sleep </p> </li>
                 </ul>
             <li>
             <li id="layout-select">
                 <h5> Starting Hour: </h5>
                 <select class="hour-select" name="start-hour" value="6 AM">
-                  <option>12 AM</option>
                   <option>1 AM</option>
                   <option>2 AM</option>
                   <option>3 AM</option>
@@ -43,10 +36,10 @@
                   <option>9 AM</option>
                   <option>10 AM</option>
                   <option>11 AM</option>
+                  <option>12 PM</option>
                 </select>
                 <h5> Ending Hour: </h5>
                 <select class="hour-select" name="end-hour" value="12 PM">
-                  <option>12 PM</option>
                   <option>1 PM</option>
                   <option>2 PM</option>
                   <option>3 PM</option>
@@ -58,10 +51,13 @@
                   <option>9 PM</option>
                   <option>10 PM</option>
                   <option>11 PM</option>
+                  <option>12 AM</option>
                 </select>
                 <p id="hour-note"> *Note: Events starting outside of the range will not be displayed </p>
             </li>
           </form>
+          <button id="submitSetBtn"> Save Settings </button>
+          <button id="cancelSetBtn"> Cancel </button>
         </div>
     </div>
 
@@ -146,6 +142,6 @@
     <script type="text/javascript" lang="javascript" src="js/calendar.js"></script>
     <script type="text/javascript" lang="javascript" src="js/clock.js"></script>
     <script type="text/javascript" lang="javascript" src="js/settings.js"></script>
-    <script src="https://apis.google.com/js/client.js?onload=handleClientLoadAuto"></script>
+    <script src="https://apis.google.com/js/client.js?onload=getSettings"></script>
 
 </html>

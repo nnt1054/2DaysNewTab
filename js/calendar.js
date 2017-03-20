@@ -1,5 +1,5 @@
-//var CLIENT_ID = '559223177845-pcv87vtaid3f0imeh6f3g7lc3hqtj1jv.apps.googleusercontent.com'; //chromebook
-var CLIENT_ID = '559223177845-orlvkhl9pkq9jf7f98gf7qepmp6iuqda.apps.googleusercontent.com'; //thinkpad
+var CLIENT_ID = '559223177845-pcv87vtaid3f0imeh6f3g7lc3hqtj1jv.apps.googleusercontent.com'; //chromebook
+//var CLIENT_ID = '559223177845-orlvkhl9pkq9jf7f98gf7qepmp6iuqda.apps.googleusercontent.com'; //thinkpad
 
 var SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"];
 var apiKey = "AIzaSyCdneDaG1uHV0gxjmmw6znWcemFamIy_yA"
@@ -9,6 +9,50 @@ var tomorrow = new Date(today.getTime() + (24 * 60 * 60 * 1000))
 var todayList = document.getElementById("today-list");
 var tomorrowList = document.getElementById("tomorrow-list");
 var colors;
+var settings;
+
+var settings = {
+    "displayedCals": {/*
+        calId: {
+            "name": event.summary
+            "show": true/false
+        },
+    */},
+    "startHour": "6 AM",
+    "endHour": "11 PM",
+}
+
+function getSettings() {
+    chrome.storage.sync.get("settings", function(obj) {
+        if (!obj.settings) {
+
+            var starter_settings = {
+                "settings": {
+                    "displayedCals": {/*
+                        calId: {
+                            "name": event.summary
+                            "show": true/false
+                        },
+                    */},
+                    "startHour": "6 AM",
+                    "endHour": "11 PM",                
+                }          
+            }
+
+            chrome.storage.sync.set(starter_settings, function() {
+                settings = starter_settings;
+                setGrid();
+                formSetTimeIntervals();
+                handleClientLoadAuto();
+            })
+        } else {
+            settings = obj.settings;
+            setGrid();
+            formSetTimeIntervals();
+            handleClientLoadAuto();
+        }
+    });
+}
 
 document.getElementById("authorize-button").addEventListener("click", handleAuthClick);
 
@@ -67,7 +111,17 @@ function getListOfCalendars() {
   cListRequest.execute(function(response) {
     var calendarList = response.items;
     for (var i = 0; i < calendarList.length; i++) {
-        getUpcomingEvents(calendarList[i]);
+        var cid = calendarList[i].id;
+        addCalendarToSettings(calendarList[i]);
+        if (!settings.displayedCals[cid]) {
+            settings.displayedCals[cid] = {
+                "name": calendarList[i].summary,
+                "show": true
+            }
+        }
+        if (settings.displayedCals[cid].show) {
+            getUpcomingEvents(calendarList[i]);
+        }
     }
   })
 
@@ -89,7 +143,6 @@ function getUpcomingEvents(cal) {
 }
 
 function displayEvents(response, cal) {
-  console.log(cal.colorId);
   events = response;
   todayList.numItems = 0;
   tomorrowList.numItems = 0;
@@ -117,7 +170,10 @@ function displaySingleEvent(event, calColor) {
   } else {
     return 0;
   }
-  var slot = dayList.children[startTime.getHours() - 6];
+    
+  var start_offset = parseInt(settings.startHour.slice(0, -3));
+  var slot = dayList.children[startTime.getHours() - start_offset];
+  if (slot) {
 
   var div = document.createElement("div");
   var name = document.createElement("p");
@@ -145,7 +201,6 @@ function displaySingleEvent(event, calColor) {
   div.draggable = true;
   div.defaultHeight = (duration * 100) + "%";
 
-  console.log(colors);
   if (event.colorId) {
     var RGB = colors.event[event.colorId].background;
   } else {
@@ -176,7 +231,7 @@ function displaySingleEvent(event, calColor) {
     div.style.background = colorStr;
   }
 
-  div.defaultZIndex = dayList.numItems + 6;
+  div.defaultZIndex = dayList.numItems + start_offset;
   if (slot.children.length) {
     div.defaultZIndex = slot.children[slot.children.length - 1].style.zIndex;
     slot.insertBefore(div, slot.children[0]);
@@ -193,7 +248,7 @@ function displaySingleEvent(event, calColor) {
     div.autoHeight = div.smallHeight;
   }
   div.style.height = div.smallHeight + "px";
-
+  }
   return 1;
 
 }
