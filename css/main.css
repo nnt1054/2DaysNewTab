@@ -590,9 +590,16 @@ form > input {
   right: 25px;
 }
 
+#promo {
+  position: absolute;
+  font-size: 8pt;
+  right: 15px;
+  bottom: 35px;
+}
+
 #submitSetBtn {
   position: absolute;
-  bottom: 10px;
+  bottom: 18px;
   left: 10px;
     background-color: gray;
     padding: 5px 10px;
@@ -610,7 +617,7 @@ form > input {
 
 #cancelSetBtn {
   position: absolute;
-  bottom: 10px;
+  bottom: 18px;
   right: 10px;
     background-color: red;
     padding: 5px 10px;
