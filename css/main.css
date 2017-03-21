@@ -458,7 +458,7 @@ form > input {
   width: 50%;
   border-radius: 12px;
   text-align: center;
-  min-height: 34px;
+  min-height: 30px;
   color: white;
   pointer-events: all;
   overflow: hidden;

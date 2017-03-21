@@ -7,6 +7,8 @@ if (imgurl) {
     document.body.style.background = "linear-gradient( rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1) ), " + imgurl;
     document.body.style.backgroundSize = "cover";
     //linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ),
+} else {
+    document.body.style.background = "lightgray";
 }
 
 var old;
