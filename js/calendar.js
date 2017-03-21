@@ -189,9 +189,9 @@ function displayAllDayEvent(event, calColor) {
   }
     
   var label = document.getElementById("time-labels").children[0].children[0];
-  label.style.height = "";
+  label.style.height = "200%";
   var slot = dayList.children[0];
-  slot.style.height = "";
+  slot.style.height = "200%";
   var name = document.createElement("p");
   name.style.zIndex = "inerit";
   name.style.paddingTop = "3px";
@@ -216,7 +216,6 @@ function displayAllDayEvent(event, calColor) {
   div.appendChild(place);
   
   div.className = "event"
-  div.draggable = true;
 
   if (event.colorId) {
     var RGB = colors.event[event.colorId].background;
@@ -227,10 +226,9 @@ function displayAllDayEvent(event, calColor) {
   var colorStr = 'rgba('+parseInt(RGB.substring(1,3),16)+','+parseInt(RGB.substring(3,5),16)+','+parseInt(RGB.substring(5,7),16)+','+A+')';
     
   div.style.background = colorStr;
-  div.style.height = "50%";
+  div.style.height = "20px";
   div.style.minHeight = "20px";
-  div.style.top = (dayList.numDayItems)*10 + "px";
-  div.style.left = (dayList.numDayItems)*10 + "px";
+  div.style.top = (dayList.numDayItems)*20 + "px";
     
   div.onmouseover = function(event){
     var item = event.target;
@@ -311,7 +309,6 @@ function displaySingleEvent(event, calColor) {
 
 
   div.className = "event"
-  div.draggable = true;
   div.defaultHeight = (duration * 100) + "%";
 
   if (event.colorId) {

@@ -19,11 +19,11 @@ function setGrid() {
   var startTime = parseInt(settings.startHour.slice(0, -3));
   var endTime = parseInt(settings.endHour.slice(0, -3)) + 13;
   makeEventSection(todayList, -1);
-  for (var i = startTime; i <= endTime; i++) {
+  for (var i = startTime; i < endTime; i++) {
     makeEventSection(todayList, 1);
   }
   makeEventSection(tomorrowList);
-  for (var i = startTime; i <= endTime; i++) {
+  for (var i = startTime; i < endTime; i++) {
     makeEventSection(tommorowList, 1);
   }
   setLabels();
@@ -34,7 +34,7 @@ function setLabels() {
     var endTime = parseInt(settings.endHour.slice(0, -3));
     var am = "AM", pm = "PM";
     makeHourLabel(-1, "");
-    for (var i = startTime; i <= 12; i++) {
+    for (var i = startTime; i < 12; i++) {
       makeHourLabel(i, am);
     }
     makeHourLabel(12, pm);
