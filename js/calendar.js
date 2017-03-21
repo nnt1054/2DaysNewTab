@@ -1,5 +1,5 @@
-var CLIENT_ID = '559223177845-pcv87vtaid3f0imeh6f3g7lc3hqtj1jv.apps.googleusercontent.com'; //chromebook
-//var CLIENT_ID = '559223177845-orlvkhl9pkq9jf7f98gf7qepmp6iuqda.apps.googleusercontent.com'; //thinkpad
+//var CLIENT_ID = '559223177845-pcv87vtaid3f0imeh6f3g7lc3hqtj1jv.apps.googleusercontent.com'; //chromebook
+var CLIENT_ID = '559223177845-orlvkhl9pkq9jf7f98gf7qepmp6iuqda.apps.googleusercontent.com'; //thinkpad
 
 var SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"];
 var apiKey = "AIzaSyCdneDaG1uHV0gxjmmw6znWcemFamIy_yA"
@@ -24,6 +24,7 @@ var settings = {
 }
 
 function getSettings() {
+    document.body.classList.toggle('loaded');
     initNote();
     chrome.storage.sync.get("settings", function(obj) {
         if (!obj.settings) {
@@ -37,8 +38,8 @@ function getSettings() {
                         },
                     */},
                     "startHour": "6 AM",
-                    "endHour": "11 PM",                
-                }          
+                    "endHour": "11 PM",
+                }
             }
 
             chrome.storage.sync.set(starter_settings, function() {
@@ -170,7 +171,7 @@ function displayAllDayEvent(event, calColor) {
   var endDate = new Date(str.slice(0,4), parseInt(str.slice(5,7)) - 1, str.slice(8,10));
   var div = document.createElement("div");
   div.style.borderRadius = "2px";
-  
+
   var dayList;
     //cases: starts before today ends today; starts today ends today; starts today ends tomorrow;
     //       starts today ends after tomorrow; starts tomorrow ends tomorrow; starts tomorrow ends after tomorrow;
@@ -187,7 +188,7 @@ function displayAllDayEvent(event, calColor) {
     div.style.width = "200%";
     tomorrowList.numDayItems++;
   }
-    
+
   var label = document.getElementById("time-labels").children[0].children[0];
   label.style.height = "200%";
   var slot = dayList.children[0];
@@ -197,7 +198,7 @@ function displayAllDayEvent(event, calColor) {
   name.style.paddingTop = "3px";
   name.innerHTML = event.summary;
   div.appendChild(name);
-    
+
   var dateStr = document.createElement("p");
   var realEndDate = new Date(endDate.getTime() - (24 * 60 * 60 * 1000))
   if (startDate.getTime() == realEndDate.getTime()) {
@@ -207,14 +208,14 @@ function displayAllDayEvent(event, calColor) {
         realEndDate.getMonth() + "/" + realEndDate.getDate()
   }
   div.appendChild(dateStr);
-    
+
   var place = document.createElement("p");
   place.style.paddingBottom = "5px";
   if (event.location) {
     place.innerHTML = event.location;
   }
   div.appendChild(place);
-  
+
   div.className = "event"
 
   if (event.colorId) {
@@ -224,12 +225,12 @@ function displayAllDayEvent(event, calColor) {
   }
   var A = 0.3;
   var colorStr = 'rgba('+parseInt(RGB.substring(1,3),16)+','+parseInt(RGB.substring(3,5),16)+','+parseInt(RGB.substring(5,7),16)+','+A+')';
-    
+
   div.style.background = colorStr;
   div.style.height = "20px";
   div.style.minHeight = "20px";
   div.style.top = (dayList.numDayItems)*20 + "px";
-    
+
   div.onmouseover = function(event){
     var item = event.target;
     item.style.zIndex = 9999;
@@ -261,7 +262,7 @@ function displayAllDayEvent(event, calColor) {
   if (div.autoHeight < div.smallHeight) {
     div.autoHeight = div.smallHeight;
   }
-  div.style.height = div.smallHeight + "px";    
+  div.style.height = div.smallHeight + "px";
   slot.appendChild(div);
   return 1;
 }
@@ -273,7 +274,7 @@ function displaySingleEvent(event, calColor) {
   duration = duration/(1000 * 60 * 60);
   var offset = (startTime.getMinutes() / 60) * 100;
   var todayDate = new Date(today.getYear(), today.getMonth(), today.getDate());
-    
+
   var dayList;
   if (startTime.getDate() == today.getDate() && startTime.getMonth() == today.getMonth()) {
     dayList = todayList;
@@ -282,9 +283,9 @@ function displaySingleEvent(event, calColor) {
   } else if (startTime.getTime() < today.getTime()) {
     return 1;
   } else {
-    return 0;   
+    return 0;
   }
-    
+
   var start_offset = parseInt(settings.startHour.slice(0, -3)) - 1;
   var slot = dayList.children[startTime.getHours() - start_offset];
   if (slot) {

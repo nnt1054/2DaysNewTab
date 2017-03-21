@@ -3,7 +3,10 @@ document.body.style.backgroundSize = "cover";
 document.body.style.backgroundRepeat = "no-repeat";
 var imgurl = localStorage.getItem("background-img");
 if (imgurl) {
-    document.body.style.backgroundImage = imgurl;
+    //document.body.style.backgroundImage = imgurl;
+    document.body.style.background = "linear-gradient( rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1) ), " + imgurl;
+    document.body.style.backgroundSize = "cover";
+    //linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ),
 }
 
 var old;
