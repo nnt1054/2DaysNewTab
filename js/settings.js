@@ -24,6 +24,7 @@ function saveSettings() {
     console.log(settings);
     for (var i = 0; i < items.length; i++) {
         var cal = items[i].children[0]
+        console.log(cal.checked);
         settings.displayedCals[cal.name].show = cal.checked;
     }
     

@@ -5,7 +5,11 @@ var tommorowList = document.getElementById("tomorrow-list");
 function makeHourLabel(hour, suffix) {
     var li = document.createElement("li");
     var div = document.createElement("div");
-    div.innerHTML = hour + " " + suffix;
+    if (hour != -1) {
+        div.innerHTML = hour + " " + suffix;
+    } else {
+        li.style.height = "0px";
+    }
     li.className = "hour";
     li.appendChild(div);
     tlist.appendChild(li);
@@ -13,12 +17,14 @@ function makeHourLabel(hour, suffix) {
 
 function setGrid() {
   var startTime = parseInt(settings.startHour.slice(0, -3));
-  var endTime = parseInt(settings.endHour.slice(0, -3)) + 12;
+  var endTime = parseInt(settings.endHour.slice(0, -3)) + 13;
+  makeEventSection(todayList, -1);
   for (var i = startTime; i <= endTime; i++) {
-    makeEventSection(todayList);
+    makeEventSection(todayList, 1);
   }
+  makeEventSection(tomorrowList);
   for (var i = startTime; i <= endTime; i++) {
-    makeEventSection(tommorowList);
+    makeEventSection(tommorowList, 1);
   }
   setLabels();
 }
@@ -27,7 +33,7 @@ function setLabels() {
     var startTime = parseInt(settings.startHour.slice(0, -3));
     var endTime = parseInt(settings.endHour.slice(0, -3));
     var am = "AM", pm = "PM";
-    //makeHourLabel(12, am);
+    makeHourLabel(-1, "");
     for (var i = startTime; i <= 12; i++) {
       makeHourLabel(i, am);
     }
@@ -37,9 +43,12 @@ function setLabels() {
     }
 }
 
-function makeEventSection(list) {
+function makeEventSection(list, i) {
   var li = document.createElement("li");
   li.className = "hour";
+  if (i == -1) {
+    li.style.height = "0px";
+  }
   list.appendChild(li);
 }
 

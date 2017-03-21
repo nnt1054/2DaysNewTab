@@ -155,14 +155,43 @@ form > button {
     position: absolute;
     top: 10px;
     right: 10px;
-    height: 20px;
+    height: auto;
     width: 180px;
     overflow: hidden;
 }
 
+#notes {
+    width: 50%;
+    height: 100%;
+    font-size: 12pt;
+}
+
+#notes > p {
+    position: relative;
+    top: 15px;
+    margin: 0px;
+    margin-left: 10%;
+    padding: 0px;
+}
+
+#note-box {
+    position: relative;
+    width: 80%;
+    height: 86%;
+    margin-left: 10%;
+    border-radius: 12px;
+    background: rgba(0,0,0,.3);
+    color: white;
+    
+    border: none;
+    overflow: auto;
+    outline: none;
+    padding: 7px;
+}
+
 #bookmarks {
-    width: 100%;
-    height: 64%;
+    width: 50%;
+    height: 100%;
 }
 
 #bookmark-list {
@@ -182,8 +211,45 @@ form > button {
 }
 
 #weather {
-    width: 100%;
+    width: 93%;
     height: 16%;
+    display: flex;
+    flex-direction: row;
+    flex: 0 100% 0;
+    overflow: hidden:
+}
+
+.day-forecast {
+    height: 100%;
+    min-width: 30px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: center;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+#weather > div > * {
+    margin: 0px;
+    padding: 0px;
+    width: auto;
+    text-align: center;
+}
+
+#current-weather {
+    flex: 1.5;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+#current-weather > h1 {
+    font-size: 24pt;
+}
+
+#current-weather > * {
+    padding: 0px;
+    margin: 0px;
 }
 
 #calendar {
@@ -202,7 +268,7 @@ form > button {
     width: 45%;
     height: 100%;
     border-left: thin solid white;
-    overflow: hidden;
+    overflow: visible;
 }
 
 #tomorrow {
@@ -223,6 +289,14 @@ form > button {
     width: 50%;
     height: 100%;
     color: white;
+}
+
+.horizontal {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 64%;
+    color: white; 
 }
 
 #header-spacer {
@@ -317,8 +391,6 @@ form > input {
 .single-bookmark {
     position: relative;
     width: 90px;
-    padding-left: 5px;
-    padding-right: 5px;
     border-radius: 12px;
     text-align: center;
     vertical-align: middle;
@@ -386,7 +458,7 @@ form > input {
 .event:hover {
   background-color: white;
   color: black;
-  min-height: 150px;
+  padding-bottom: 5px;
 }
 
 .event:hover p {

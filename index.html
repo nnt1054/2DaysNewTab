@@ -65,29 +65,36 @@
         <div id="container">
 
             <div class="vertical">
-                <div id="bookmarks">
-                    <ul id="bookmark-list">
-                        <li id="bookmark-add" class="single-bookmark"> <p> New Bookmark </p> </li>
-                      <div id="overlay-div"></div>
-                      <div id="add-bookmark" class="popuph">
-                        <form id="bookmark-form">
-                          Bookmark Name:<br>
-                          <input type="text" name="name"><br>
-                          URL:<br>
-                          <input type="text" name="url"><br>
-                          Folder:<br>
-                          <select id="folders" name="folders">
-                            <option>Default</option>
-                          </select> <br>
-                          <button id="bookmark-create"> Add Bookmark </button> <br> <br>
-                        </form>
-                        <form id="folder-form">
-                          Folder Name:
-                          <input type="text" name="name"><br>
-                          <button id="folder-create"> Add Folder </button>
-                        </form>
-                      </div>
-                    </ul>
+                <div class="horizontal">
+                    <div id="bookmarks">
+                        <ul id="bookmark-list">
+                            <li id="bookmark-add" class="single-bookmark"> <p> New Bookmark </p> </li>
+                          <div id="overlay-div"></div>
+                          <div id="add-bookmark" class="popuph">
+                            <form id="bookmark-form">
+                              Bookmark Name:<br>
+                              <input type="text" name="name"><br>
+                              URL:<br>
+                              <input type="text" name="url"><br>
+                              Folder:<br>
+                              <select id="folders" name="folders">
+                                <option>Default</option>
+                              </select> <br>
+                              <button id="bookmark-create"> Add Bookmark </button> <br> <br>
+                            </form>
+                            <form id="folder-form">
+                              Folder Name:
+                              <input type="text" name="name"><br>
+                              <button id="folder-create"> Add Folder </button>
+                            </form>
+                          </div>
+                        </ul>
+                    </div>
+                    
+                    <div id="notes">
+                        <p> Notes </p> <br>
+                        <textarea id="note-box" name="paragraph_text" spellcheck="false"></textarea>
+                    </div>
                 </div>
 
                 <div id="clock" class="vertical">
@@ -99,7 +106,9 @@
 
             <div class="vertical">
 
-                <div id="weather"></div>
+                <div id="weather">
+                
+                </div>
 
                 <div id="calendar-header">
                         <div id="header-spacer"> </div>
@@ -134,14 +143,14 @@
          </div>
     </div>
 </body>
-
-    <script type="text/javascript" lang="javascript" src="js/layout.js"></script>
     <script type="text/javascript" lang="javascript" src="js/background.js"></script>
+    <script type="text/javascript" lang="javascript" src="js/calendar.js"></script>
+    <script type="text/javascript" lang="javascript" src="js/layout.js"></script>
     <script type="text/javascript" lang="javascript" src="js/bookmarks.js"></script>
     <script type="text/javascript" lang="javascript" src="js/weather.js"></script>
-    <script type="text/javascript" lang="javascript" src="js/calendar.js"></script>
     <script type="text/javascript" lang="javascript" src="js/clock.js"></script>
     <script type="text/javascript" lang="javascript" src="js/settings.js"></script>
+    <script type="text/javascript" lang="javascript" src="js/notes.js"></script>
     <script src="https://apis.google.com/js/client.js?onload=getSettings"></script>
 
 </html>
