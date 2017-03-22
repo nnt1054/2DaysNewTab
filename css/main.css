@@ -211,6 +211,9 @@ form > button {
     flex-direction: column;
     flex-wrap: wrap;
     margin: 0px;
+    font-size: 9pt;
+    -webkit-transition: all 0.15s ease 0s;
+    transition: all 0.15s ease 0s;
 }
 
 #clock {
@@ -409,13 +412,20 @@ form > input {
     background: rgba(0,0,0,.3);
     color: white;
     margin-bottom: 10px;
-    margin-right: 20px;
+    margin-right: 10px;
     cursor: pointer;
+    -webkit-transition: all 0.15s ease 0s;
+    transition: all 0.15s ease 0s;
 }
 
 .single-bookmark:hover {
     background-color: white;
     color: black;
+}
+
+.single-bookmark > p {
+    -webkit-transition: all 0.15s ease 0s;
+    transition: all 0.15s ease 0s; 
 }
 
 .popuph {
@@ -465,15 +475,13 @@ form > input {
   background: rgba(0,100,100,.5);
   -webkit-transition: all 0.1s ease 0s;
   transition: all 0.15s ease 0s;
+  font-size: 10pt;
 }
 
 .event:hover {
   background-color: white;
   color: black;
   padding-bottom: 5px;
-}
-
-.event:hover p {
   font-size: 12pt;
 }
 
@@ -484,7 +492,6 @@ form > input {
   margin: 0px;
   z-index: inherit;
   pointer-events: none;
-  font-size: 10pt;
   font-weight: bold;
   transition: font-size 0.15s, height 0.15s ease 0s;
 }

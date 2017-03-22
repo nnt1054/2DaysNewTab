@@ -96,11 +96,12 @@ function findExtFolder() {
         display(folder);
       } else {
         chrome.bookmarks.create({
-           title: "test"
+           title: "2Day Bookmarks"
         }, function(folder) {
           bm = folder;
         });
       }
+      var blist = document.getElementById("bookmark-list");
   });
 }
 

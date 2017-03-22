@@ -1,5 +1,5 @@
-//var CLIENT_ID = '559223177845-pcv87vtaid3f0imeh6f3g7lc3hqtj1jv.apps.googleusercontent.com'; //chromebook
-var CLIENT_ID = '559223177845-orlvkhl9pkq9jf7f98gf7qepmp6iuqda.apps.googleusercontent.com'; //thinkpad
+var CLIENT_ID = '559223177845-pcv87vtaid3f0imeh6f3g7lc3hqtj1jv.apps.googleusercontent.com'; //chromebook
+//var CLIENT_ID = '559223177845-orlvkhl9pkq9jf7f98gf7qepmp6iuqda.apps.googleusercontent.com'; //thinkpad
 
 var SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"];
 var apiKey = "AIzaSyCdneDaG1uHV0gxjmmw6znWcemFamIy_yA"
@@ -227,9 +227,17 @@ function displayAllDayEvent(event, calColor) {
   var colorStr = 'rgba('+parseInt(RGB.substring(1,3),16)+','+parseInt(RGB.substring(3,5),16)+','+parseInt(RGB.substring(5,7),16)+','+A+')';
 
   div.style.background = colorStr;
-  div.style.height = "20px";
   div.style.minHeight = "20px";
   div.style.top = (dayList.numDayItems)*20 + "px";
+  div.style.zIndex = div.defaultZIndex;
+  dayList.numDayItems++;
+  div.smallHeight = div.offsetHeight;
+  div.style.height = "auto";
+  div.autoHeight = div.offsetHeight;
+  if (div.autoHeight < div.smallHeight) {
+    div.autoHeight = div.smallHeight;
+  }
+  div.style.height = div.smallHeight + "px";
 
   div.onmouseover = function(event){
     var item = event.target;
@@ -254,15 +262,7 @@ function displayAllDayEvent(event, calColor) {
   } else {
     slot.appendChild(div);
   }
-  div.style.zIndex = div.defaultZIndex;
-  dayList.numDayItems++;
-  div.smallHeight = div.offsetHeight;
-  div.style.height = "auto";
-  div.autoHeight = div.offsetHeight;
-  if (div.autoHeight < div.smallHeight) {
-    div.autoHeight = div.smallHeight;
-  }
-  div.style.height = div.smallHeight + "px";
+    
   slot.appendChild(div);
   return 1;
 }
@@ -293,19 +293,21 @@ function displaySingleEvent(event, calColor) {
   var div = document.createElement("div");
   var name = document.createElement("p");
   name.style.paddingTop = "3px";
+  name.style.fontSize = "12pt";
 
   name.innerHTML = event.summary;
   div.appendChild(name);
 
   var dateStr = document.createElement("p");
   dateStr.innerHTML = formatAMPM(startTime) + " - " + formatAMPM(endTime);
+  dateStr.style.fontSize = "12pt";
   div.appendChild(dateStr);
 
   var place = document.createElement("p");
-  place.style.paddingBottom = "5px";
   if (event.location) {
     place.innerHTML = event.location;
   }
+  place.style.fontSize = "12pt";
   div.appendChild(place);
 
 
@@ -359,6 +361,9 @@ function displaySingleEvent(event, calColor) {
     div.autoHeight = div.smallHeight;
   }
   div.style.height = div.smallHeight + "px";
+  name.style.fontSize = "";
+  dateStr.style.fontSize = "";
+  place.style.fontSize = "";
   }
   return 1;
 
