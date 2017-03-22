@@ -1,5 +1,5 @@
-var CLIENT_ID = '559223177845-pcv87vtaid3f0imeh6f3g7lc3hqtj1jv.apps.googleusercontent.com'; //chromebook
-//var CLIENT_ID = '559223177845-orlvkhl9pkq9jf7f98gf7qepmp6iuqda.apps.googleusercontent.com'; //thinkpad
+//var CLIENT_ID = '559223177845-pcv87vtaid3f0imeh6f3g7lc3hqtj1jv.apps.googleusercontent.com'; //chromebook
+var CLIENT_ID = '559223177845-orlvkhl9pkq9jf7f98gf7qepmp6iuqda.apps.googleusercontent.com'; //thinkpad
 
 var SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"];
 var apiKey = "AIzaSyCdneDaG1uHV0gxjmmw6znWcemFamIy_yA"
@@ -21,6 +21,7 @@ var settings = {
     */},
     "startHour": "6 AM",
     "endHour": "11 PM",
+    "units": "°F"
 }
 
 function getSettings() {
@@ -262,7 +263,7 @@ function displayAllDayEvent(event, calColor) {
   } else {
     slot.appendChild(div);
   }
-    
+
   slot.appendChild(div);
   return 1;
 }
@@ -294,6 +295,7 @@ function displaySingleEvent(event, calColor) {
   var name = document.createElement("p");
   name.style.paddingTop = "3px";
   name.style.fontSize = "12pt";
+  name.style.transition = "font-size 0.15s ease 0s";
 
   name.innerHTML = event.summary;
   div.appendChild(name);
@@ -301,6 +303,7 @@ function displaySingleEvent(event, calColor) {
   var dateStr = document.createElement("p");
   dateStr.innerHTML = formatAMPM(startTime) + " - " + formatAMPM(endTime);
   dateStr.style.fontSize = "12pt";
+  dateStr.style.transition = "font-size 0.15s ease 0s";
   div.appendChild(dateStr);
 
   var place = document.createElement("p");
@@ -308,6 +311,7 @@ function displaySingleEvent(event, calColor) {
     place.innerHTML = event.location;
   }
   place.style.fontSize = "12pt";
+  place.style.transition = "font-size 0.15s ease 0s";
   div.appendChild(place);
 
 
@@ -364,6 +368,11 @@ function displaySingleEvent(event, calColor) {
   name.style.fontSize = "";
   dateStr.style.fontSize = "";
   place.style.fontSize = "";
+  setTimeout(function() {
+    name.style.transition = "";
+    dateStr.style.transition = "";
+    place.style.transition = "";
+  }, 150);
   }
   return 1;
 

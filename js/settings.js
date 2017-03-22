@@ -21,13 +21,12 @@ function saveSettings() {
     var items = calendar_list.getElementsByTagName("li");
     settings.startHour = form["start-hour"].value;
     settings.endHour = form["end-hour"].value;
-    console.log(settings);
+    settings.units = form["units"].value;
     for (var i = 0; i < items.length; i++) {
         var cal = items[i].children[0]
-        console.log(cal.checked);
         settings.displayedCals[cal.name].show = cal.checked;
     }
-    
+
     chrome.storage.sync.set({"settings": settings}, function() {
         showSettings();
         location.reload();
@@ -47,14 +46,15 @@ function addCalendarToSettings(cal) {
 
     li.appendChild(input);
     li.appendChild(p);
-    
+
     calendar_list.appendChild(li);
 }
 
 function formSetTimeIntervals() {
     form["start-hour"].value = settings.startHour;
     form["end-hour"].value = settings.endHour;
-}                   
-                           
-                           
+    form["units"].value = settings.units;
+}
+
+
 //<li> <input type="checkbox" name="bike1" class="cal-checkbox"/> <p> Primary </p> </li>

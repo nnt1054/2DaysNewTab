@@ -108,7 +108,7 @@ function findExtFolder() {
 function openFolder(name) {
   chrome.bookmarks.getChildren(nametoid[name], function(children) {
     if (children.length == 0) {
-        return;   
+        return;
     }
     children.forEach(function(child) {
       window.open(child.url, '_blank');
@@ -128,7 +128,6 @@ function display(folder) {
       if (child.url) {
         var name = document.createElement("p");
         name.innerHTML = child.title;
-        name.style.paddingTop = "3px";
         div.appendChild(name);
 
         li.addEventListener('click', function(event){
@@ -143,14 +142,13 @@ function display(folder) {
 
         var name = document.createElement("p");
         name.innerHTML = child.title;
-        name.style.paddingTop = "3px";
         div.appendChild(name);
 
         li.addEventListener('click', function(){
           openFolder(div.firstChild.innerHTML);
         })
-        
-        
+
+
         chrome.bookmarks.getChildren(nametoid[div.firstChild.innerHTML], function(children) {
             if (children.length == 0) {
                 title = "Empty Folder";
@@ -159,10 +157,14 @@ function display(folder) {
                 title += child.title + "\n";
             })
             li.setAttribute("title", title);
-        });          
+        });
       }
-      li.appendChild(div)
+      li.appendChild(div);
+      li.style.opacity = "0";
       blist.appendChild(li);
+      setTimeout(function() {
+        li.style.opacity = "";
+      }, 1)
     })
   })
 }

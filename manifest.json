@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Best New Tab Page",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "The absolute best new tab page",
     "permissions": [
         "activeTab",
@@ -9,14 +9,18 @@
         "identity",
         "bookmarks",
         "storage",
+        "tabs",
         "unlimitedStorage",
         "https://accounts.google.com/*",
         "identity.email"
       ],
     "chrome_url_overrides" : {"newtab" : "index.html"},
     "content_scripts": [{
-      "js": ["lib/jquery-3.1.1.min.js", "lib/jquery.simpleWeather.min.js"],
-    "matches": ["http://*/*", "https://*/*"] }],
+      "js": ["js/popup.js"],
+      "matches": ["http://*/*", "https://*/*"] }],
+    "browser_action": {
+      "default_popup": "popup.html"
+    },
     "content_security_policy": "script-src 'self' https://apis.google.com https://query.yahooapis.com; object-src 'self'",
     "oauth2": {
         "client_id": "559223177845-tlcomk97jck9d9tjdr27hgs3eu95b5qi.apps.googleusercontent.com",

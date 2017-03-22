@@ -53,9 +53,17 @@
                   <option>11 PM</option>
                   <option>12 AM</option>
                 </select>
-                <p id="hour-note"> *Note: Events starting outside of the range will not be displayed </p>
-                <p id="promo"> Please consider downloading the paid version to support the developer, thanks! </p>
+                <br>
             </li>
+            <p id="hour-note"> *Note: Events starting outside of the range will not be displayed </p>
+            <li id="unit-option">
+              <h5> Units: </h5>
+              <select class="unit-select" name="units" value="&degF">
+                <option>&degF</option>
+                <option>&degC</option>
+              </select>
+            </li>
+            <p id="promo"> Plus version coming out soon! </p>
           </form>
           <button id="submitSetBtn"> Save Settings </button>
           <button id="cancelSetBtn"> Cancel </button>
@@ -69,7 +77,7 @@
                 <div class="horizontal">
                     <div id="bookmarks">
                         <ul id="bookmark-list">
-                            <li id="bookmark-add" class="single-bookmark"> <p> New Bookmark </p> </li>
+                          <li id="bookmark-add" class="single-bookmark"> <p> New Bookmark </p> </li>
                           <div id="overlay-div"></div>
                           <div id="add-bookmark" class="popuph">
                             <form id="bookmark-form">
@@ -91,7 +99,7 @@
                           </div>
                         </ul>
                     </div>
-                    
+
                     <div id="notes">
                         <p> Notes </p> <br>
                         <textarea id="note-box" name="paragraph_text" spellcheck="false"></textarea>
@@ -108,7 +116,7 @@
             <div class="vertical">
 
                 <div id="weather">
-                
+
                 </div>
 
                 <div id="calendar-header">
