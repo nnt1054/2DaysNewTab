@@ -17,7 +17,7 @@ function startTime() {
     var today = new Date();
     var timeStr = formatAMPM(today);
     time_div.innerHTML = timeStr;
-    
+
     var date_div = document.getElementById("day-month-date-year");
     var day = dayList[today.getDay()];
     var month = monthList[today.getMonth()];
@@ -25,8 +25,6 @@ function startTime() {
     var year = today.getFullYear();
     var dateStr = day + ", " + month + " " + date + ", " + year;
     date_div.innerHTML = dateStr;
-    
+
     setTimeout(startTime, 1000);
 }
-
-startTime();

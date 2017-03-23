@@ -12,6 +12,9 @@ body, html {
     font-weight: bold;
     overflow-x: hidden;
     transition: all 0.4s ease;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 body {
@@ -93,15 +96,17 @@ form > button {
   border-radius: 12px;
   background: rgba(0,0,0,.3);
   color: white;
-  z-index: 500;
+  z-index: 5;
 }
 
 #settings-btn.cancels {
   background: red;
+  z-index: 500;
 }
 
 #settings-btn:hover {
   background: white;
+  z-index: 500;
 }
 
 #settings-btn:hover #settings-icon {
@@ -417,8 +422,8 @@ form > input {
     margin-bottom: 10px;
     margin-right: 10px;
     cursor: pointer;
-    -webkit-transition: all 0.15s ease 0s;
-    transition: all 0.15s ease 0s;
+    -webkit-transition: background-color 0.15s ease 0s;
+    transition: background-color 0.15s ease 0s;
 }
 
 .single-bookmark:hover {
@@ -428,8 +433,8 @@ form > input {
 
 .single-bookmark > p {
     padding-top: = "3px";
-    -webkit-transition: all 0.3s ease 0s;
-    transition: all 0.3s ease 0s;
+    -webkit-transition: background-color 0.15s ease 0s;
+    transition: background-color 0.15s ease 0s;
 }
 
 .popuph {
@@ -604,7 +609,7 @@ form > input {
   position: absolute;
   font-size: 8pt;
   top: 215px;
-  right: 25px;
+  right: 18px;
 }
 
 #unit-option {

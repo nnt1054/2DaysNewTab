@@ -1,5 +1,8 @@
 //var CLIENT_ID = '559223177845-pcv87vtaid3f0imeh6f3g7lc3hqtj1jv.apps.googleusercontent.com'; //chromebook
-var CLIENT_ID = '559223177845-orlvkhl9pkq9jf7f98gf7qepmp6iuqda.apps.googleusercontent.com'; //thinkpad
+//var CLIENT_ID = '559223177845-orlvkhl9pkq9jf7f98gf7qepmp6iuqda.apps.googleusercontent.com'; //thinkpad
+//var CLIENT_ID = '559223177845-tlcomk97jck9d9tjdr27hgs3eu95b5qi.apps.googleusercontent.com'; //desktop
+var CLIENT_ID = '559223177845-t78ldg5pg7t7nqlskkuksqa6r3sl6l2e.apps.googleusercontent.com'; //desktop
+
 
 var SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"];
 var apiKey = "AIzaSyCdneDaG1uHV0gxjmmw6znWcemFamIy_yA"
@@ -12,24 +15,24 @@ var tomorrowList = document.getElementById("tomorrow-list");
 var colors;
 var settings;
 
+/*
 var settings = {
-    "displayedCals": {/*
+    "displayedCals": {
         calId: {
             "name": event.summary
             "show": true/false
         },
-    */},
+    },
     "startHour": "6 AM",
     "endHour": "11 PM",
     "units": "°F"
-}
+}*/
 
 function getSettings() {
     document.body.classList.toggle('loaded');
     initNote();
     chrome.storage.sync.get("settings", function(obj) {
         if (!obj.settings) {
-
             var starter_settings = {
                 "settings": {
                     "displayedCals": {/*
@@ -40,18 +43,25 @@ function getSettings() {
                     */},
                     "startHour": "6 AM",
                     "endHour": "11 PM",
+                    "units": "°F"
                 }
             }
 
             chrome.storage.sync.set(starter_settings, function() {
-                settings = starter_settings;
+                settings = starter_settings.settings;
+                startTime();
                 setGrid();
+                getCoords();
+                setInterval(loadWeather, 10000);
                 formSetTimeIntervals();
                 handleClientLoadAuto();
             })
         } else {
             settings = obj.settings;
+            startTime();
             setGrid();
+            getCoords();
+            setInterval(loadWeather, 10000);
             formSetTimeIntervals();
             handleClientLoadAuto();
         }

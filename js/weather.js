@@ -8,13 +8,6 @@ function getCoords() {
         });
     }
 }
-
- $(document).ready(function() {
-   getCoords();
-   setInterval(loadWeather, 10000);
- })
-
-
  function loadWeather(location, woeid) {
        $.simpleWeather({
          location: location,

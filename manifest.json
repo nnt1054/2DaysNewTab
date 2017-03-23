@@ -1,8 +1,8 @@
 {
     "manifest_version": 2,
-    "name": "Best New Tab Page",
-    "version": "0.0.4",
-    "description": "The absolute best new tab page",
+    "name": "2Day's New Tab",
+    "version": "0.0.3",
+    "description": "A functional new tab page that displays Google Calendar events, custom bookmarks, and a weekly weather forecast.",
     "permissions": [
         "activeTab",
         "https://ajax.googleapis.com/*",
@@ -21,6 +21,9 @@
     "browser_action": {
       "default_popup": "popup.html"
     },
+    "icons": { "16": "assets/logo16.png",
+           "48": "assets/logo48.png",
+          "128": "assets/logo128.png" },
     "content_security_policy": "script-src 'self' https://apis.google.com https://query.yahooapis.com; object-src 'self'",
     "oauth2": {
         "client_id": "559223177845-tlcomk97jck9d9tjdr27hgs3eu95b5qi.apps.googleusercontent.com",

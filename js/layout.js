@@ -65,5 +65,3 @@ function addCurrentTime() {
     slot.style.borderBottom = "thin solid red";
   }
 }
-
-addCurrentTime();
