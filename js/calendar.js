@@ -48,7 +48,7 @@ function getSettings() {
                     "format": 12,
                     "location": "Berkeley, CA"
                 },
-                "note": "lmao thanks for downloading"
+                "note": "Hey! Thanks so much for downloading! 2Day's New Tab Page is still undergoing some minor changes so please bear with us and we hope you enjoy our product!"
             }
 
             chrome.storage.sync.set(starter_settings, function() {
@@ -424,7 +424,6 @@ function displaySingleEvent(event, calColor) {
 
   var i;
   for (i = 1; i < Math.round(duration) + (startTime.getMinutes() / 60); i++) {
-    console.log(event.summary);
     sloti = dayList.children[startTime.getHours() - start_offset + i];
     while (sloti.numItems < slot.numItems || sloti.numItems < 1) {
       spacer = document.createElement("div");

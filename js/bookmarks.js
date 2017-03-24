@@ -2,10 +2,58 @@ window.onload = findExtFolder;
 document.getElementById("bookmark-add").addEventListener("click", showForms);
 document.getElementById("bookmark-create").addEventListener("click", addBookmark);
 document.getElementById("folder-create").addEventListener("click", addFolder);
+var add_btn = document.getElementById("bookmark-add");
+add_btn.addEventListener("dragleave", deleteDragLeave);
+add_btn.addEventListener("dragover", deleteDragOver);
+add_btn.addEventListener("drop", deleteDrop);
+
 
 var bm;
 var folders = document.getElementById("folders");
 var nametoid = {};
+
+function dragStart(e) {
+  var add_btn = document.getElementById("bookmark-add");
+  add_btn.classList.toggle("cancel");
+  add_btn.children[0].innerHTML = "Delete";
+  this.style.opacity = "0.4";
+
+  e.dataTransfer.effectAllowed = 'move';
+  e.dataTransfer.setData('text/html', this.children[0].children[0].innerHTML);
+}
+
+function dragEnd(e) {
+  var add_btn = document.getElementById("bookmark-add");
+  add_btn.classList.toggle("cancel");
+  add_btn.children[0].innerHTML = "New Bookmark";
+  this.style.opacity = "";
+}
+
+function deleteDragOver(e) {
+  if (e.preventDefault) {
+    e.preventDefault();
+  }
+  e.dataTransfer.dropEffect = 'move';
+  this.style.backgroundColor = "white";
+  this.style.color = "red";
+}
+
+function deleteDragLeave(e) {
+  this.style.backgroundColor = "";
+  this.style.color = "";
+}
+
+function deleteDrop(e) {
+  if (e.stopPropagation) {
+    e.stopPropagation();
+  }
+  var bmid = nametoid[e.dataTransfer.getData('text/html')];
+  chrome.bookmarks.removeTree(bmid, function(x) {
+    console.log(x);
+  })
+  location.reload();
+  return false;
+}
 
 function showForms() {
   document.getElementById("overlay-div").classList.toggle("overlay");
@@ -161,11 +209,9 @@ function display(folder) {
         });
       }
       li.appendChild(div);
-      li.style.opacity = "0";
+      li.addEventListener('dragstart', dragStart);
+      li.addEventListener('dragend', dragEnd);
       blist.appendChild(li);
-      setTimeout(function() {
-        li.style.opacity = "";
-      }, 1)
     })
   })
 }
