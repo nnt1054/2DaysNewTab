@@ -4,7 +4,9 @@ var monthList = ["January", "Feburary", "March", "April", "May", "June", "July",
 function formatAMPM(date) {
   var hours = date.getHours();
   var minutes = date.getMinutes();
-  hours = hours % 12;
+  if (settings.format == 12) {
+    hours = hours % 12;
+  }
   hours = hours ? hours : 12; // the hour '0' should be '12'
   hours = hours < 10 ? '0'+ hours : hours;
   minutes = minutes < 10 ? '0'+ minutes : minutes;

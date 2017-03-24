@@ -7,6 +7,7 @@ function makeHourLabel(hour, suffix) {
     var div = document.createElement("div");
     if (hour != -1) {
         div.innerHTML = hour + " " + suffix;
+        li.style.flex = 1;
     } else {
         li.style.height = "0px";
     }
@@ -48,6 +49,12 @@ function makeEventSection(list, i) {
   li.className = "hour";
   if (i == -1) {
     li.style.height = "0px";
+    li.style.display = "flex";
+    li.style.flexDirection = "column";
+  } else {
+    li.style.flex = 1;
+    li.takenIndexes = [];
+    li.numItems = 0;
   }
   list.appendChild(li);
 }

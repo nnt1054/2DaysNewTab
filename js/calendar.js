@@ -1,7 +1,8 @@
 //var CLIENT_ID = '559223177845-pcv87vtaid3f0imeh6f3g7lc3hqtj1jv.apps.googleusercontent.com'; //chromebook
 //var CLIENT_ID = '559223177845-orlvkhl9pkq9jf7f98gf7qepmp6iuqda.apps.googleusercontent.com'; //thinkpad
 //var CLIENT_ID = '559223177845-tlcomk97jck9d9tjdr27hgs3eu95b5qi.apps.googleusercontent.com'; //desktop
-var CLIENT_ID = '559223177845-t78ldg5pg7t7nqlskkuksqa6r3sl6l2e.apps.googleusercontent.com'; //desktop
+var CLIENT_ID = "559223177845-v4du335uoum4at9s27ego1qetif666db.apps.googleusercontent.com" //desktop local
+//var CLIENT_ID = '559223177845-t78ldg5pg7t7nqlskkuksqa6r3sl6l2e.apps.googleusercontent.com'; //published
 
 
 var SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"];
@@ -43,15 +44,18 @@ function getSettings() {
                     */},
                     "startHour": "6 AM",
                     "endHour": "11 PM",
-                    "units": "°F"
-                }
+                    "units": "°F",
+                    "format": 12,
+                    "location": "Berkeley, CA"
+                },
+                "note": "lmao thanks for downloading"
             }
 
             chrome.storage.sync.set(starter_settings, function() {
                 settings = starter_settings.settings;
                 startTime();
                 setGrid();
-                getCoords();
+                loadWeather();
                 setInterval(loadWeather, 10000);
                 formSetTimeIntervals();
                 handleClientLoadAuto();
@@ -60,7 +64,7 @@ function getSettings() {
             settings = obj.settings;
             startTime();
             setGrid();
-            getCoords();
+            loadWeather();
             setInterval(loadWeather, 10000);
             formSetTimeIntervals();
             handleClientLoadAuto();
@@ -100,7 +104,6 @@ function handleAuthResult(authResult) {
   } else {
     // Show auth UI, allowing the user to initiate authorization by
     // clicking authorize button.
-    authorizeBtn.style.display = 'inline';
   }
 }
 
@@ -123,6 +126,12 @@ function getColors() {
 function getListOfCalendars() {
   var cListRequest = gapi.client.calendar.calendarList.list({});
   cListRequest.execute(function(response) {
+    todayList.numItems = 0;
+    tomorrowList.numItems = 0;
+    todayList.numDayItems = 0;
+    tomorrowList.numDayItems = 0;
+    todayList.indexes = [];
+    tomorrowList.indexes = [];
     var calendarList = response.items;
     for (var i = 0; i < calendarList.length; i++) {
         var cid = calendarList[i].id;
@@ -157,10 +166,6 @@ function getUpcomingEvents(cal) {
 
 function displayEvents(response, cal) {
   events = response;
-  todayList.numItems = 0;
-  tomorrowList.numItems = 0;
-  todayList.numDayItems = 0;
-  tomorrowList.numDayItems = 0;
   var len = events.items.length;
   var i = 0;
   var loop = 1;
@@ -182,28 +187,43 @@ function displayAllDayEvent(event, calColor) {
   var endDate = new Date(str.slice(0,4), parseInt(str.slice(5,7)) - 1, str.slice(8,10));
   var div = document.createElement("div");
   div.style.borderRadius = "2px";
+  div.style.position = "absolute";
 
   var dayList;
+  var otherList;
     //cases: starts before today ends today; starts today ends today; starts today ends tomorrow;
     //       starts today ends after tomorrow; starts tomorrow ends tomorrow; starts tomorrow ends after tomorrow;
   if (endDate.getTime() < today.getTime() || startDate.getTime() > tomorrow.getTime()) {
     return 1;
   } else if (endDate.getTime() == tomorrow.getTime()) {
+    var both = false;
     dayList = todayList;
+    otherList = tomorrowList;
     div.style.width = "100%";
   } else if (startDate.getTime() == tomorrow.getTime()) {
+    var both = false;
     dayList = tomorrowList;
+    otherList = todayList;
     div.style.width = "100%";
   } else {
+    var both = true;
     dayList = todayList;
+    otherList = tomorrowList;
     div.style.width = "200%";
-    tomorrowList.numDayItems++;
+    otherList.numDayItems++;
   }
+  dayList.numDayItems++;
 
   var label = document.getElementById("time-labels").children[0].children[0];
-  label.style.height = "200%";
+  var label_height = dayList.numDayItems;
+  if (otherList.numDayItems > dayList.numDayItems) {
+    label_height = otherList.numDayItems;
+  }
+  label.style.height = 20*label_height + "px";
   var slot = dayList.children[0];
-  slot.style.height = "200%";
+  slot.style.height = 20*label_height + "px";
+  var other_slot = otherList.children[0];
+  other_slot.style.height = 20*label_height + "px";
   var name = document.createElement("p");
   name.style.zIndex = "inerit";
   name.style.paddingTop = "3px";
@@ -227,8 +247,7 @@ function displayAllDayEvent(event, calColor) {
   }
   div.appendChild(place);
 
-  div.className = "event"
-
+  div.className = "event";
   if (event.colorId) {
     var RGB = colors.event[event.colorId].background;
   } else {
@@ -236,19 +255,29 @@ function displayAllDayEvent(event, calColor) {
   }
   var A = 0.3;
   var colorStr = 'rgba('+parseInt(RGB.substring(1,3),16)+','+parseInt(RGB.substring(3,5),16)+','+parseInt(RGB.substring(5,7),16)+','+A+')';
-
   div.style.background = colorStr;
-  div.style.minHeight = "20px";
-  div.style.top = (dayList.numDayItems)*20 + "px";
+  div.defaultZIndex = dayList.numItems;
   div.style.zIndex = div.defaultZIndex;
-  dayList.numDayItems++;
-  div.smallHeight = div.offsetHeight;
-  div.style.height = "auto";
-  div.autoHeight = div.offsetHeight;
-  if (div.autoHeight < div.smallHeight) {
-    div.autoHeight = div.smallHeight;
+
+  var i = 0;
+  while($.inArray(i, dayList.indexes) != -1) {
+    i++;
   }
-  div.style.height = div.smallHeight + "px";
+  dayList.indexes.push(i);
+  if (both) {
+    otherList.indexes.push(i);
+  }
+
+  div.style.top = 20*(i) + "px"
+  div.smallHeight = 20;
+  div.style.height = "auto";
+  setTimeout(function() {
+    div.autoHeight = div.offsetHeight;
+    if (div.autoHeight < div.smallHeight) {
+      div.autoHeight = div.smallHeight;
+    }
+    div.style.height = "20px";
+  }, 10);
 
   div.onmouseover = function(event){
     var item = event.target;
@@ -262,11 +291,10 @@ function displayAllDayEvent(event, calColor) {
     var item = event.target;
     item.style.zIndex = event.target.defaultZIndex;
     item.parentNode.style.zIndex = 3;
-    item.style.height = item.smallHeight + "px";
     div.style.background = colorStr;
+    div.style.height = "20px";
   }
 
-  div.defaultZIndex = dayList.numItems;
   if (slot.children.length) {
     div.defaultZIndex = slot.children[slot.children.length - 1].style.zIndex;
     slot.insertBefore(div, slot.children[0]);
@@ -326,7 +354,6 @@ function displaySingleEvent(event, calColor) {
 
 
   div.className = "event"
-  div.defaultHeight = (duration * 100) + "%";
 
   if (event.colorId) {
     var RGB = colors.event[event.colorId].background;
@@ -337,17 +364,44 @@ function displaySingleEvent(event, calColor) {
   var colorStr = 'rgba('+parseInt(RGB.substring(1,3),16)+','+parseInt(RGB.substring(3,5),16)+','+parseInt(RGB.substring(5,7),16)+','+A+')';
 
   div.style.background = colorStr;
-  div.style.height = div.defaultHeight;
+  div.style.width = "50%";
   div.style.top = offset + "%";
-  div.style.left = (dayList.numItems%4)*13 + 5 + "%";
+  div.style.flex = 1;
+
+  var slot_index = slot.childNodes.length - 1;
+  while (slot_index >= 0 && $.inArray(slot_index, slot.takenIndexes) != -1) {
+    slot_index--;
+  }
+  if (slot_index < 0) {
+    slot.appendChild(div);
+  } else {
+    slot.insertBefore(div, slot.childNodes[slot_index]);
+  }
+  setTimeout(function(){
+    div.style.maxWidth = div.offsetWidth;
+    div.style.width = "";
+  })
+
+  //2 heights: event duration height; hover height
+  div.defaultHeight = (duration * 100) + "%";
+  div.style.height = div.defaultHeight;
+  div.smallHeight = div.offsetHeight;
+  div.style.height = "auto";
+  setTimeout(function() {
+    div.autoHeight = div.offsetHeight;
+    if (div.autoHeight < div.smallHeight) {
+      div.autoHeight = div.smallHeight;
+    }
+    div.style.height = div.smallHeight + "px";
+  }, 10);
 
   div.onmouseover = function(event){
     var item = event.target;
     item.style.zIndex = 9999;
     item.parentNode.style.zIndex = 9999;
-    item.style.height = item.autoHeight + "px";
+    item.style.height = item.autoHeight + 25 + "px";
     div.style.background = "white";
-
+    div.style.flex = dayList.numItems;
   }
 
   div.onmouseout = function(event){
@@ -356,33 +410,33 @@ function displaySingleEvent(event, calColor) {
     item.parentNode.style.zIndex = 3;
     item.style.height = item.smallHeight + "px";
     div.style.background = colorStr;
+    div.style.width = "";
+    div.style.flex = 1;
   }
 
-  div.defaultZIndex = dayList.numItems + start_offset;
-  if (slot.children.length) {
-    div.defaultZIndex = slot.children[slot.children.length - 1].style.zIndex;
-    slot.insertBefore(div, slot.children[0]);
-  } else {
-    slot.appendChild(div);
-  }
   div.style.zIndex = div.defaultZIndex;
   dayList.numItems++;
-
-  div.smallHeight = div.offsetHeight;
-  div.style.height = "auto";
-  div.autoHeight = div.offsetHeight;
-  if (div.autoHeight < div.smallHeight) {
-    div.autoHeight = div.smallHeight;
-  }
-  div.style.height = div.smallHeight + "px";
   name.style.fontSize = "";
   dateStr.style.fontSize = "";
   place.style.fontSize = "";
-  setTimeout(function() {
-    name.style.transition = "";
-    dateStr.style.transition = "";
-    place.style.transition = "";
-  }, 150);
+
+  //spacer for overlapping divs
+
+  var i;
+  for (i = 1; i < Math.round(duration) + (startTime.getMinutes() / 60); i++) {
+    console.log(event.summary);
+    sloti = dayList.children[startTime.getHours() - start_offset + i];
+    while (sloti.numItems < slot.numItems || sloti.numItems < 1) {
+      spacer = document.createElement("div");
+      spacer.style.flex = 1;
+      sloti.appendChild(spacer);
+      sloti.numItems++;
+    }
+    sloti.takenIndexes.push(slot.numItems);
+  }
+
+  slot.takenIndexes.push(slot.numItems);
+  slot.numItems++;
   }
   return 1;
 

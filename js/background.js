@@ -35,7 +35,7 @@ function gotImage(event) {
   var reader = new FileReader();
   reader.onload = function(event) {
     var imgurl = 'url(' + event.target.result + ')'
-    document.body.style.backgroundImage = imgurl;
+    document.body.style.backgroundImage = "linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), " + imgurl;
     localStorage.setItem("background-img", imgurl);
     removeUploadBtn();
   };

@@ -123,6 +123,7 @@ function display(folder) {
     children.forEach(function(child){
       nametoid[child.title] = child.id;
       var li = document.createElement("li");
+      li.setAttribute("draggable", true);
       var div = li.appendChild(document.createElement("div"));
       li.className = "single-bookmark";
       if (child.url) {

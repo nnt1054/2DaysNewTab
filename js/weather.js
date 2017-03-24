@@ -1,4 +1,4 @@
-function getCoords() {
+/*function getCoords() {
     if("geolocation" in navigator) {
         navigator.geolocation.getCurrentPosition(function(position) {
             loadWeather({location: position.coords.latitude + ',' + position.coords.longitude,
@@ -7,10 +7,11 @@ function getCoords() {
             loadWeather("Berkeley, CA", {unit: settings.units[1]}, handleWeather);
         });
     }
-}
+}*/
+
  function loadWeather(location, woeid) {
        $.simpleWeather({
-         location: location,
+         location: settings.location,
          woeid: woeid,
          unit: settings.units[1],
 

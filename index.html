@@ -10,7 +10,7 @@
     </head>
 <body>
     <div id="settings-btn">
-        <i id="settings-icon" class="fa fa-cog fa-3x" aria-hidden="true"></i>
+        <i id="settings-icon" class="fa fa-cog fa-2x" aria-hidden="true"></i>
     </div>
 
     <div id="settings-menu"  class="popupw">
@@ -56,11 +56,21 @@
                 <br>
             </li>
             <p id="hour-note"> *Note: Events starting outside of the range will not be displayed </p>
+            <li id="weather-select">
+              <h5> Weather Location: </h5>
+              <input id="location-input" type="text" name="location" value="">
+            </li>
+            <p id="location-note"> Ex: "Berkeley, CA" or "94720" </p>
             <li id="unit-option">
               <h5> Units: </h5>
               <select class="unit-select" name="units" value="&degF">
                 <option>&degF</option>
                 <option>&degC</option>
+              </select>
+              <h5> Format: </h5>
+              <select class="unit-select" name="format">
+                <option>12</option>
+                <option>24</option>
               </select>
             </li>
             <p id="promo"> Plus version coming soon! </p>

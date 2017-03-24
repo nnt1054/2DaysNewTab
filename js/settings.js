@@ -22,6 +22,10 @@ function saveSettings() {
     settings.startHour = form["start-hour"].value;
     settings.endHour = form["end-hour"].value;
     settings.units = form["units"].value;
+    settings.format = form["format"].value;
+    if (form["location"].value != "") {
+    settings.location = form["location"].value;
+    };
     for (var i = 0; i < items.length; i++) {
         var cal = items[i].children[0]
         settings.displayedCals[cal.name].show = cal.checked;
