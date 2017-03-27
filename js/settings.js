@@ -47,6 +47,9 @@ function addCalendarToSettings(cal) {
 
     var p = document.createElement("p");
     p.innerHTML = cal.summary;
+    if (cal.summaryOverride) {
+      p.innerHTML = cal.summaryOverride;
+    }
 
     li.appendChild(input);
     li.appendChild(p);
@@ -58,6 +61,7 @@ function formSetTimeIntervals() {
     form["start-hour"].value = settings.startHour;
     form["end-hour"].value = settings.endHour;
     form["units"].value = settings.units;
+    form["format"].value = settings.format;
 }
 
 

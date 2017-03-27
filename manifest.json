@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "2Day's New Tab",
-    "version": "0.0.4",
+    "version": "0.0.6",
     "description": "A functional new tab page that displays Google Calendar events, custom bookmarks, and a weekly weather forecast.",
     "permissions": [
         "activeTab",
@@ -31,7 +31,6 @@
             "https://www.googleapis.com/auth/plus.login",
             "https://www.googleapis.com/auth/userinfo.email",
             "https://www.googleapis.com/auth/calendar",
-            "https://www.googleapis.com/auth/plus.login",
             "https://www.googleapis.com/auth/plus.me"
         ]
     }

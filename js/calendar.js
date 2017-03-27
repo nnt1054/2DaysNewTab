@@ -1,11 +1,12 @@
 //var CLIENT_ID = '559223177845-pcv87vtaid3f0imeh6f3g7lc3hqtj1jv.apps.googleusercontent.com'; //chromebook
-//var CLIENT_ID = '559223177845-orlvkhl9pkq9jf7f98gf7qepmp6iuqda.apps.googleusercontent.com'; //thinkpad
+var CLIENT_ID = '559223177845-orlvkhl9pkq9jf7f98gf7qepmp6iuqda.apps.googleusercontent.com'; //thinkpad
 //var CLIENT_ID = '559223177845-tlcomk97jck9d9tjdr27hgs3eu95b5qi.apps.googleusercontent.com'; //desktop
-var CLIENT_ID = "559223177845-v4du335uoum4at9s27ego1qetif666db.apps.googleusercontent.com" //desktop local
+//var CLIENT_ID = "559223177845-v4du335uoum4at9s27ego1qetif666db.apps.googleusercontent.com" //desktop local
 //var CLIENT_ID = '559223177845-t78ldg5pg7t7nqlskkuksqa6r3sl6l2e.apps.googleusercontent.com'; //published
 
 
 var SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"];
+
 var apiKey = "AIzaSyCdneDaG1uHV0gxjmmw6znWcemFamIy_yA"
 
 var today = new Date();
@@ -48,7 +49,7 @@ function getSettings() {
                     "format": 12,
                     "location": "Berkeley, CA"
                 },
-                "note": "Hey! Thanks so much for downloading! 2Day's New Tab Page is still undergoing some minor changes so please bear with us and we hope you enjoy our product!"
+                "note": "Hey! Thanks so much for downloading! 2Day's New Tab Page is still undergoing some minor changes so please bear with us and we hope you enjoy our product!  We also recommend opening the settings menu in the top right corner and setting your own custom background first to get things started! Click on the 2Day icon in the corner of your browser to view more troubleshooting information and faq."
             }
 
             chrome.storage.sync.set(starter_settings, function() {
@@ -248,6 +249,8 @@ function displayAllDayEvent(event, calColor) {
   div.appendChild(place);
 
   div.className = "event";
+  div.style.maxWidth = "200%";
+
   if (event.colorId) {
     var RGB = colors.event[event.colorId].background;
   } else {
@@ -353,7 +356,7 @@ function displaySingleEvent(event, calColor) {
   div.appendChild(place);
 
 
-  div.className = "event"
+  div.className = "event";
 
   if (event.colorId) {
     var RGB = colors.event[event.colorId].background;

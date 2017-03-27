@@ -487,6 +487,7 @@ form > input {
   transition: all 0.15s ease 0s;
   font-size: 10pt;
   justify-content: flex-start;
+  max-width: 50%;
 }
 
 .event:hover {
