@@ -1,4 +1,3 @@
-window.onload = findExtFolder;
 document.getElementById("bookmark-add").addEventListener("click", showForms);
 document.getElementById("bookmark-create").addEventListener("click", addBookmark);
 document.getElementById("folder-create").addEventListener("click", addFolder);
