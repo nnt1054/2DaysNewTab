@@ -483,8 +483,8 @@ form > input {
   pointer-events: all;
   overflow: hidden;
   background: rgba(0,100,100,.5);
-  -webkit-transition: all 0.15s ease 0s;
-  transition: all 0.15s ease 0s;
+  -webkit-transition: all 0.10s ease 0s;
+  transition: all 0.10s ease 0s;
   font-size: 10pt;
   justify-content: flex-start;
   max-width: 50%;
@@ -494,7 +494,7 @@ form > input {
   background-color: white;
   color: black;
   padding-bottom: 5px;
-  font-size: 12pt;
+  font-size: 10.5pt;
 }
 
 .event p {

@@ -31,7 +31,9 @@ var settings = {
 }*/
 
 function getSettings() {
-    console.log("started getSettings");
+    findExtFolder();
+    startTime();
+
     document.body.classList.toggle('loaded');
     chrome.storage.sync.get("settings", function(obj) {
         if (!obj.settings) {
@@ -49,13 +51,11 @@ function getSettings() {
                     "format": 12,
                     "location": "Berkeley, CA"
                 },
-                "note": "Hey! Thanks so much for downloading! 2Day's New Tab Page is still undergoing some minor changes so please bear with us and we hope you enjoy our product!  We also recommend opening the settings menu in the top right corner and setting your own custom background first to get things started! Click on the 2Day icon in the corner of your browser to view more troubleshooting information and faq."
+                "note": "To Do:\n-open settings\n-upload wallpaper\n-enter location for weather\n-use 'New Bookmark' button to add bookmarks and/or folders\n-use Chrome Bookmark Manager to import exisiting bookmarks\n-click on extension icon to read Troubleshooting and FAQ\n-leave a review\n\nThanks for downloading 2Day's New Tab Extension!  We hope you make good use of our app and please send any issues, comments, or feedback in the link at the bottom of the FAQ. Thanks so much!"
             }
             chrome.storage.sync.set(starter_settings, function() {
                 settings = starter_settings.settings;
-                findExtFolder();
                 initNote();
-                startTime();
                 setGrid();
                 loadWeather();
                 setInterval(loadWeather, 10000);
@@ -64,9 +64,7 @@ function getSettings() {
             })
         } else {
             settings = obj.settings;
-            findExtFolder();
             initNote();
-            startTime();
             setGrid();
             loadWeather();
             setInterval(loadWeather, 10000);

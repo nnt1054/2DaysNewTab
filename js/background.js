@@ -1,10 +1,11 @@
 var imgurl = localStorage.getItem("background-img");
 var refreshIntervalId = setInterval(function() {
+  var imgurl = localStorage.getItem("background-img");
   if (imgurl) {
       document.body.style.backgroundImage = "linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), " + imgurl;
       clearInterval(refreshIntervalId);
   } else {
-      //document.body.style.backgroundImage = "linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) )";
+      document.body.style.backgroundImage = "linear-gradient( rgba(0, 0, 255, 0.3), rgba(0, 0, 255, 0.3) )";
   }
 }, 1);
 

@@ -52,7 +52,7 @@ function handleWeather(weather) {
 
 function displayWeekForecast(weather) {
     var weather_list = weather.forecast;
-    for (var i = 0; i < 7; i++) {
+    for (var i = 0; i < 5; i++) {
         makeSingleForecast(weather_list[i], i);
     }
 };
