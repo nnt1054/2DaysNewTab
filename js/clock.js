@@ -1,5 +1,5 @@
 var dayList = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-var monthList = ["January", "Feburary", "March", "April", "May", "June", "July", "August", "September", "November", "December"];
+var monthList = ["January", "Feburary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 function formatAMPM(date) {
   var hours = date.getHours();
