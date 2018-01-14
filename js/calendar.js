@@ -16,6 +16,7 @@ var todayList = document.getElementById("today-list");
 var tomorrowList = document.getElementById("tomorrow-list");
 var colors;
 var settings;
+var cal_counter = 0;
 
 /*
 var settings = {
@@ -51,7 +52,7 @@ function getSettings() {
                     "format": 12,
                     "location": "Berkeley, CA"
                 },
-                "note": "To Do:\n-open settings\n-upload wallpaper\n-enter location for weather\n-use 'New Bookmark' button to add bookmarks and/or folders\n-use Chrome Bookmark Manager to import exisiting bookmarks\n-click on extension icon to read Troubleshooting and FAQ\n-leave a review\n\nThanks for downloading 2Day's New Tab Extension!  We hope you make good use of our app and please send any issues, comments, or feedback in the link at the bottom of the FAQ. Thanks so much!"
+                "note": "To Do:\n-resize page with ctrl +/- \n-open settings\n-upload wallpaper\n-enter location for weather\n-use 'New Bookmark' button to add bookmarks and/or folders\n-use Chrome Bookmark Manager to import exisiting bookmarks\n-click on extension icon to read Troubleshooting and FAQ\n-leave a review\n\nThanks for downloading 2Day's New Tab Extension!  We hope you make good use of our app and please send any issues, comments, or feedback in the link at the bottom of the FAQ. Thanks so much!"
             }
             chrome.storage.sync.set(starter_settings, function() {
                 settings = starter_settings.settings;
@@ -126,6 +127,7 @@ function getColors() {
 }
 
 function getListOfCalendars() {
+  cal_counter++;
   var cListRequest = gapi.client.calendar.calendarList.list({});
   cListRequest.execute(function(response) {
     todayList.numItems = 0;
@@ -134,6 +136,20 @@ function getListOfCalendars() {
     tomorrowList.numDayItems = 0;
     todayList.indexes = [];
     tomorrowList.indexes = [];
+    
+    var label = document.getElementById("time-labels").children[0].children[0];
+    label.style.height = 0 + "px";
+    
+    for (i = 0; calendar_list.children.length > 0; i++) {
+      calendar_list.removeChild(calendar_list.children[0]);
+    }
+    
+    //Naive Synchronization (Only display if last API call)
+    cal_counter--;
+    if (cal_counter !== 0) {
+      return;
+    }
+    
     var calendarList = response.items;
     for (var i = 0; i < calendarList.length; i++) {
         var cid = calendarList[i].id;
@@ -152,6 +168,29 @@ function getListOfCalendars() {
 }
 
 function getUpcomingEvents(cal) {
+  //CLear Displayed Events
+  for (i = 0; i < todayList.children.length; i++) {
+    slot = todayList.children[i]
+    if (slot.children.length) {
+      for (j = 0; slot.children.length > 0; j++) {
+        slot.removeChild(slot.children[0]);
+      }
+      slot.numItems = null;
+    }
+  }
+
+  for (i = 0; i < tomorrowList.children.length; i++) {
+    slot = tomorrowList.children[i];
+    if (slot.children.length) {
+      for (j = 0; slot.children.length > 0; j++) {
+        slot.removeChild(slot.children[0]);
+      }
+      slot.numItems = null;
+    }
+  }
+  
+  todayList.children[0].style.height = "0px";
+  tomorrowList.children[0].style.height = "0px";
 
   var request = gapi.client.calendar.events.list({
     'calendarId': cal.id,
@@ -171,6 +210,7 @@ function displayEvents(response, cal) {
   var len = events.items.length;
   var i = 0;
   var loop = 1;
+
   while ((i < len) && loop) {
     if (events.items[i].start.dateTime) {
         var loop = displaySingleEvent(events.items[i], cal.colorId);
@@ -298,7 +338,7 @@ function displayAllDayEvent(event, calColor) {
     div.style.background = colorStr;
     div.style.height = "20px";
   }
-
+  
   if (slot.children.length) {
     div.defaultZIndex = slot.children[slot.children.length - 1].style.zIndex;
     slot.insertBefore(div, slot.children[0]);
@@ -429,7 +469,7 @@ function displaySingleEvent(event, calColor) {
   var i;
   for (i = 1; i < Math.round(duration) + (startTime.getMinutes() / 60); i++) {
     sloti = dayList.children[startTime.getHours() - start_offset + i];
-    while (sloti.numItems < slot.numItems || sloti.numItems < 1) {
+    while (sloti.numItems <= slot.numItems || sloti.numItems < 1) {
       spacer = document.createElement("div");
       spacer.style.flex = 1;
       sloti.appendChild(spacer);
@@ -454,3 +494,31 @@ function formatAMPM(date) {
   var strTime = hours + ':' + minutes;
   return strTime;
 }
+
+var date_back_btn = document.getElementById("date-back");
+var date_forward_btn = document.getElementById("date-forward");
+var today_label = document.getElementById("today-title");
+var tomorrow_label = document.getElementById("tomorrow-title");
+
+function date_back() {
+
+  today = new Date(today.getTime() - 2*(24 * 60 * 60 * 1000))
+  tomorrow = new Date(tomorrow.getTime() - 2*(24 * 60 * 60 * 1000))
+  today_label.innerHTML = dayList[today.getDay()] + " " + (today.getMonth()+1) + "/" + today.getDate();
+  tomorrow_label.innerHTML = dayList[tomorrow.getDay()] + " " + (tomorrow.getMonth()+1) + "/" + tomorrow.getDate();
+  getListOfCalendars();
+  
+}
+
+function date_forward() {
+
+  today = new Date(today.getTime() + 2*(24 * 60 * 60 * 1000))
+  tomorrow = new Date(tomorrow.getTime() + 2*(24 * 60 * 60 * 1000))
+  today_label.innerHTML = dayList[today.getDay()] + " " + (today.getMonth()+1) + "/" + today.getDate();
+  tomorrow_label.innerHTML = dayList[tomorrow.getDay()] + " " + (tomorrow.getMonth()+1) + "/" + tomorrow.getDate();
+  getListOfCalendars();
+  
+}
+
+date_back_btn.addEventListener("click", date_back);
+date_forward_btn.addEventListener("click", date_forward);
