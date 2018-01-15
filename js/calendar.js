@@ -168,6 +168,7 @@ function getListOfCalendars() {
 }
 
 function getUpcomingEvents(cal) {
+  
   //CLear Displayed Events
   for (i = 0; i < todayList.children.length; i++) {
     slot = todayList.children[i]

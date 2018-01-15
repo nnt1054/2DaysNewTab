@@ -23,7 +23,7 @@ function setGrid() {
   for (var i = startTime; i < endTime; i++) {
     makeEventSection(todayList, 1);
   }
-  makeEventSection(tomorrowList);
+  makeEventSection(tomorrowList, -1);
   for (var i = startTime; i < endTime; i++) {
     makeEventSection(tommorowList, 1);
   }
