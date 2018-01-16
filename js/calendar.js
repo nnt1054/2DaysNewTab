@@ -503,8 +503,8 @@ var tomorrow_label = document.getElementById("tomorrow-title");
 
 function date_back() {
 
-  today = new Date(today.getTime() - 2*(24 * 60 * 60 * 1000))
-  tomorrow = new Date(tomorrow.getTime() - 2*(24 * 60 * 60 * 1000))
+  today = new Date(today.getTime() - (24 * 60 * 60 * 1000))
+  tomorrow = new Date(tomorrow.getTime() - (24 * 60 * 60 * 1000))
   today_label.innerHTML = dayList[today.getDay()] + " " + (today.getMonth()+1) + "/" + today.getDate();
   tomorrow_label.innerHTML = dayList[tomorrow.getDay()] + " " + (tomorrow.getMonth()+1) + "/" + tomorrow.getDate();
   getListOfCalendars();
@@ -513,8 +513,8 @@ function date_back() {
 
 function date_forward() {
 
-  today = new Date(today.getTime() + 2*(24 * 60 * 60 * 1000))
-  tomorrow = new Date(tomorrow.getTime() + 2*(24 * 60 * 60 * 1000))
+  today = new Date(today.getTime() + (24 * 60 * 60 * 1000))
+  tomorrow = new Date(tomorrow.getTime() + (24 * 60 * 60 * 1000))
   today_label.innerHTML = dayList[today.getDay()] + " " + (today.getMonth()+1) + "/" + today.getDate();
   tomorrow_label.innerHTML = dayList[tomorrow.getDay()] + " " + (tomorrow.getMonth()+1) + "/" + tomorrow.getDate();
   getListOfCalendars();
