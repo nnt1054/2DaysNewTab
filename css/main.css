@@ -236,7 +236,7 @@ form > button {
     margin-top: 0px;
     top: 3px;
     width: 95%;
-    height: 16%;
+    height: 0%;
     display: flex;
     flex-direction: row;
     flex: 0 100% 0;
@@ -281,7 +281,8 @@ form > button {
     display: flex;
     flex-direction: horizontal;
     width: 100%;
-    height: 80%;
+    height: 100vh;
+    padding-top: 16px;
 }
 
 #time-labels {
@@ -304,6 +305,7 @@ form > button {
 
 #container {
     display: flex;
+    flex-direction: row;
     width: 100%;
     height: 100%;
 }
@@ -380,7 +382,7 @@ form > button {
 }
 
 #hour-minute {
-    margin-top: -20px;
+    padding-top: 20px;
     text-align: center;
     height: 70%;
     width: 100%;
@@ -419,6 +421,7 @@ form > input {
     flex-direction: row;
     width: 100%;
     height: 4%;
+    margin-top: 18px;
 }
 
 #authorize-div {
@@ -659,7 +662,7 @@ form > input {
 #hour-note {
   position: absolute;
   font-size: 8pt;
-  top: 215px;
+  top: 227px;
   right: 18px;
 }
 
@@ -700,8 +703,8 @@ form > input {
 
 #location-note {
   position: absolute;
-  font-size: 8pt;
-  top: 243px;
+  font-size: 7pt;
+  top: 275px;
   right: 18px;
 }
 
@@ -746,4 +749,19 @@ form > input {
 
 #cancelSetBtn:hover {
   color: black;
+}
+
+@media (max-width: 850px) {
+  
+  #container {
+    flex-direction: column;
+    height: 200%;
+  }
+
+  .vertical {
+    width: 95%;
+    padding-left: 12px;
+    /*padding-right: 5%;*/
+  }
+
 }

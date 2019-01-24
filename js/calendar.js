@@ -159,7 +159,7 @@ function handleListOfCalendars(response) {
     if (cal_counter !== 0) {
       return;
     }
-    
+
     var calendarList = response.items;
     for (var i = 0; i < calendarList.length; i++) {
         var cid = calendarList[i].id;
