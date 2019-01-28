@@ -294,9 +294,9 @@ function displayAllDayEvent(event, calColor) {
   var dateStr = document.createElement("p");
   var realEndDate = new Date(endDate.getTime() - (24 * 60 * 60 * 1000))
   if (startDate.getTime() == realEndDate.getTime()) {
-    dateStr.innerHTML = startDate.getMonth() + "/" + startDate.getDate();
+    dateStr.innerHTML = startDate.getMonth()+1 + "/" + startDate.getDate();
   } else {
-    dateStr.innerHTML = startDate.getMonth() + "/" + startDate.getDate() + " - " +
+    dateStr.innerHTML = startDate.getMonth()+1 + "/" + startDate.getDate() + " - " +
         realEndDate.getMonth() + "/" + realEndDate.getDate()
   }
   div.appendChild(dateStr);
