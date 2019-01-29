@@ -1,5 +1,6 @@
 window.onload = getSettings;
-var CLIENT_ID = '559223177845-t78ldg5pg7t7nqlskkuksqa6r3sl6l2e.apps.googleusercontent.com';
+// var CLIENT_ID = '559223177845-t78ldg5pg7t7nqlskkuksqa6r3sl6l2e.apps.googleusercontent.com';
+var CLIENT_ID = '559223177845-pcv87vtaid3f0imeh6f3g7lc3hqtj1jv.apps.googleusercontent.com';
 
 var SCOPES = ["https://www.googleapis.com/auth/calendar.readonly",
             "https://www.googleapis.com/auth/plus.login",
@@ -59,8 +60,8 @@ function getSettings() {
                 settings = starter_settings.settings;
                 initNote();
                 setGrid();
-                loadWeather();
-                setInterval(loadWeather, 10000);
+                // loadWeather();
+                // setInterval(loadWeather, 10000);
                 formSetTimeIntervals();
                 handleClientLoadAuto();
             })
@@ -68,27 +69,18 @@ function getSettings() {
             settings = obj.settings;
             initNote();
             setGrid();
-            loadWeather();
-            setInterval(loadWeather, 10000);
+            // loadWeather();
+            // setInterval(loadWeather, 10000);
             formSetTimeIntervals();
             handleClientLoadAuto();
         }
     });
 }
 
-document.getElementById("authorize-button").addEventListener("click", handleAuthClick);
-
-function handleAuthClick(event) {
-  handleClientLoadAuto();
-}
-
-
 var handleClientLoadAuto = function () {
   chrome.identity.getAuthToken({ 'interactive': true }, function(token) {
     accessToken = token;
     if (accessToken) {
-      var authorizeBtn = document.getElementById('authorize-button');
-      authorizeBtn.style.display = "none";
       loadCalendarApi();
     }
   });
@@ -101,8 +93,6 @@ var handleClientLoadAuto = function () {
 function loadCalendarApi() {
   getColors();
 }
-
-
 
 function getColors() {
   var xhr = new XMLHttpRequest();
@@ -118,7 +108,6 @@ function getColors() {
   xhr.responseType = "json";
   xhr.send(null);
 }
-
 
 function getListofCalendars() {
   cal_counter++;

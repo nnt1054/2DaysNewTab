@@ -26,7 +26,7 @@
           "128": "assets/logo128.png" },
     "content_security_policy": "script-src 'self' https://apis.google.com https://query.yahooapis.com; object-src 'self'",
     "oauth2": {
-        "client_id": "559223177845-t78ldg5pg7t7nqlskkuksqa6r3sl6l2e.apps.googleusercontent.com",
+        "client_id": "559223177845-pcv87vtaid3f0imeh6f3g7lc3hqtj1jv.apps.googleusercontent.com",
         "scopes": [
             "https://www.googleapis.com/auth/plus.login",
             "https://www.googleapis.com/auth/userinfo.email",

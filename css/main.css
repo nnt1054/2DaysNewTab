@@ -1,14 +1,13 @@
-@font-face {
-    font-family: Corbert_Cond_Reg;
-    src: url(../lib/Corbert_Cond_Reg/CorbertCondensed-Regular.otf)
-}
+/*@font-face {*/
+/*    font-family: Corbert_Cond_Reg;*/
+/*    src: url(../lib/Corbert_Cond_Reg/CorbertCondensed-Regular.otf)*/
+/*}*/
 
 body, html {
     position: relative;
     margin: 0;
     padding: 0;
     height: 100%;
-    /*font-family: Corbert_Cond_Reg;*/
     font-family: 'Comfortaa';
     font-weight: bold;
     overflow-x: hidden;
@@ -422,41 +421,6 @@ form > input {
     width: 100%;
     height: 4%;
     margin-top: 18px;
-}
-
-#authorize-div {
-  position: absolute;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-  z-index: 3;
-  width: 100%;
-  height: 100%;
-}
-
-.calendar-btn {
-    position: relative;
-    width: auto;
-    height: 100%;
-    border-radius: 12px;
-    text-align: center;
-    vertical-align: middle;
-    background: rgba(0,100,0,.5);
-    color: white;
-    margin-right: 20px;
-    padding-left: 10px;
-    padding-right: 10px;
-
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-}
-
-.calendar-btn:hover {
-    background-color: rgba(0,100,0,1);
 }
 
 .single-bookmark {
