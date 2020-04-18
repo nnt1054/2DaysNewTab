@@ -169,7 +169,7 @@ function display(folder) {
   chrome.bookmarks.getChildren(folder.id, function(children){
     children.forEach(function(child){
       nametoid[child.title] = child.id;
-      var li = document.createElement("li");
+      var li = document.createElement("a");
       li.setAttribute("draggable", true);
       var div = li.appendChild(document.createElement("div"));
       li.className = "single-bookmark";
@@ -177,6 +177,7 @@ function display(folder) {
         var name = document.createElement("p");
         name.innerHTML = child.title;
         div.appendChild(name);
+        li.href = child.url;
 
         li.addEventListener('click', function(event){
           window.open(child.url,"_self");

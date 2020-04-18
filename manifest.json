@@ -1,8 +1,8 @@
 {
     "manifest_version": 2,
     "name": "2Day's New Tab",
-    "version": "0.1.6",
-    "description": "A functional new tab page that displays Google Calendar events, custom bookmarks, and a weekly weather forecast.",
+    "version": "0.1.16",
+    "description": "A functional new tab page that displays Google Calendar events, and custom bookmarks.",
     "permissions": [
         "https://ajax.googleapis.com/*",
         "identity",
@@ -27,10 +27,7 @@
     "oauth2": {
         "client_id": "559223177845-t78ldg5pg7t7nqlskkuksqa6r3sl6l2e.apps.googleusercontent.com",
         "scopes": [
-            "https://www.googleapis.com/auth/plus.login",
-            "https://www.googleapis.com/auth/userinfo.email",
-            "https://www.googleapis.com/auth/calendar.readonly",
-            "https://www.googleapis.com/auth/plus.me"
+            "https://www.googleapis.com/auth/calendar.readonly"
         ]
     }
 }
