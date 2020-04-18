@@ -8,7 +8,8 @@ body, html {
     margin: 0;
     padding: 0;
     height: 100%;
-    font-family: Corbert_Cond_Reg;
+    /*font-family: Corbert_Cond_Reg;*/
+    font-family: 'Comfortaa';
     font-weight: bold;
     overflow-x: hidden;
     transition: all 0.4s ease;
@@ -379,7 +380,6 @@ form > button {
 }
 
 #hour-minute {
-    margin-top: -20px;
     text-align: center;
     height: 70%;
     width: 100%;
@@ -602,6 +602,7 @@ form > input {
   padding: 0px;
   margin-top: 0px;
   margin-bottom: 10px;
+  font-size: 12pt;
 }
 
 #calendar-list {
@@ -657,7 +658,7 @@ form > input {
 
 #hour-note {
   position: absolute;
-  font-size: 8pt;
+  font-size: 7pt;
   top: 215px;
   right: 18px;
 }
@@ -699,8 +700,8 @@ form > input {
 
 #location-note {
   position: absolute;
-  font-size: 8pt;
-  top: 243px;
+  font-size: 7pt;
+  top: 240px;
   right: 18px;
 }
 
@@ -745,4 +746,26 @@ form > input {
 
 #cancelSetBtn:hover {
   color: black;
+}
+
+
+@media (max-width: 800px) {
+  #container {
+    height: 200%;
+    flex-direction: column;
+  }
+
+  .vertical {
+    width: 97.5%;
+    margin: auto;
+  }
+
+  #settings-menu {
+      position: fixed;
+      top: 10px;
+      right: 65px;
+      margin: 0px;
+      -webkit-transition: all 0.2s ease-out;
+      transition: all 0.2s ease-out;
+  }
 }
