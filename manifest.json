@@ -4,7 +4,6 @@
     "version": "0.1.6",
     "description": "A functional new tab page that displays Google Calendar events, custom bookmarks, and a weekly weather forecast.",
     "permissions": [
-        "activeTab",
         "https://ajax.googleapis.com/*",
         "identity",
         "bookmarks",
